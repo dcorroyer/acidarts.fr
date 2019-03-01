@@ -41,6 +41,7 @@ class ProjectController extends AbstractController
     /**
      * @Route("/projects/{slug}-{id}", name="project.show", requirements={"slug": "[a-z0-9\-]*"})
      * @param Project $project
+     * @param string $slug
      * @return Response
      */
     public function show(Project $project, string $slug): Response
