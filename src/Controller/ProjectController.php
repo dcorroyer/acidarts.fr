@@ -33,8 +33,10 @@ class ProjectController extends AbstractController
      */
     public function index(): Response
     {
+        $projects = $this->repository->findAll();
         return $this->render('project/index.html.twig', [
-            'current_menu' => 'projects'
+            'current_menu' => 'projects',
+            'projects' => $projects
         ]);
     }
 
