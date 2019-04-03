@@ -1,3 +1,34 @@
+{% block javascripts %}
+
+    <script src='https://cloud.tinymce.com/5/tinymce.min.js?apiKey=your_API_key'></script>
+    <script>
+        tinymce.init({
+            selector: '#project_description',
+            //à cet endroit qu'on ajoute les options de la toolbar
+            plugins: [
+                'link',
+                'textcolor',
+                'lists',
+                'powerpaste',
+                'autolink',
+                'tinymcespellchecker',
+                'anchor',
+            ],
+            toolbar: [
+                'undo redo | bold italic underline | fontselect fontsizeselect',
+                'forecolor backcolor | anchor link'
+            ],
+        });
+    </script>
+    <style type="text/css">
+        .tox-notifications-container{
+            display: none;
+        }
+
+    </style>
+
+{% endblock %}
+
 {{ form_start(form) }}
             {{ form_widget(form) }}
 <button class="btn btn-primary">{{ button|default('Enregistrer') }}</button>
