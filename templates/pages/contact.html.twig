@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Dcorroyer' %}
+
+{% block body %}
+
+    <div class="jumbotron text-center">
+        <h1>Bienvenue</h1>
+    </div>
+
+    <div class="container">
+
+        {% for message in app.flashes('success') %}
+
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+
+        {% endfor %}
+
+        {% if not form.vars.valid %}
+
+            <div class="alert alert-danger">
+                Erreur, veuillez vérifier les informations entrées dans le formulaire de contact, puis réessayez.
+            </div>
+
+        {% endif %}
+
+    <div class="container mt-4">
+        <h2>Contact</h2>
+        <div class="container mb-4 p-4">
+            <div class="card-body">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <button class="btn btn-primary">{{ button|default('Envoyer') }}</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
