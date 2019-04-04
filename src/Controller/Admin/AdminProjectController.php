@@ -6,7 +6,9 @@ use App\Form\ProjectType;
 use App\Repository\ProjectRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AdminProjectController extends AbstractController
@@ -29,7 +31,7 @@ class AdminProjectController extends AbstractController
 
     /**
      * @Route("/admin", name="admin.project.index")
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function index()
     {
@@ -40,7 +42,7 @@ class AdminProjectController extends AbstractController
     /**
      * @Route("/admin/project/create", name="admin.project.new")
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function new(Request $request)
     {
@@ -66,7 +68,7 @@ class AdminProjectController extends AbstractController
      * @Route("/admin/{id}", name="admin.project.edit", methods="GET|POST")
      * @param Project $project
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function edit(Project $project, Request $request)
     {
@@ -89,7 +91,7 @@ class AdminProjectController extends AbstractController
      * @Route("/admin/{id}", name="admin.project.delete", methods="DELETE")
      * @param Project $project
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @return RedirectResponse
      */
     public function delete(Project $project, Request $request)
     {
