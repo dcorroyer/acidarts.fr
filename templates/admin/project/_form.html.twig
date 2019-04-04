@@ -40,16 +40,27 @@
     {{ form_end(form) }}
 </div>
 
-<h3>La miniature du bien</h3>
+{% if project.filename %}
 
-<div class="container mt-4">
-    <div class="row">
-        <div class="col-md-4 mb-4">
-            {% if project.filename %}
-                <img src="{{ vich_uploader_asset(project, 'thumbFile') }}" alt="" class="card-img-top" style="width: 100%; height: auto;">
-            {% else %}
-                <img src="{{ '../images/empty.jpg' }}" alt="" class="card-img-top" style="width: 100%; height: auto;">
-            {% endif %}
+    <h3>La miniature du bien</h3>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                    <img src="{{ vich_uploader_asset(project, 'thumbFile') }}" alt="" class="card-img-top" style="width: 100%; height: auto;">
+
+            </div>
         </div>
     </div>
-</div>
+
+{% endif %}
+
+{% for picture in project.pictures %}
+    <div class="mt-4 mb-4">
+        <img src="{{ vich_uploader_asset(picture, 'imageFile') }}" width="250" alt="">
+        <form method="post" action="{{ path('admin.picture.delete', {id: picture.id}) }}" style="display: inline-block" onsubmit="return confirm('Êtes vous vraiment sûr ?')">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ picture.id) }}">
+            <button class="btn btn-danger">Supprimer</button>
+        </form>
+    </div>
+{% endfor %}
