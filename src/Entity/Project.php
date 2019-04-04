@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use DateTime;
 use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Cocur\Slugify\Slugify;
 use Exception;
@@ -62,9 +64,22 @@ class Project
      */
     private $updated_at;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="project", orphanRemoval=true, cascade={"persist"})
+     */
+    private $pictures;
+
+    /**
+     * @Assert\All({
+     *     @Assert\Image(mimeTypes="image/jpeg")
+     *     })
+     */
+    private $imageFiles;
+
     public function __construct()
     {
         $this->created_at = new DateTime();
+        $this->pictures = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -163,6 +178,60 @@ class Project
     {
         $this->updated_at = $updated_at;
 
+        return $this;
+    }
+
+    /**
+     * @return Collection|Picture[]
+     */
+    public function getPictures(): Collection
+    {
+        return $this->pictures;
+    }
+
+    public function addPicture(Picture $picture): self
+    {
+        if (!$this->pictures->contains($picture)) {
+            $this->pictures[] = $picture;
+            $picture->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removePicture(Picture $picture): self
+    {
+        if ($this->pictures->contains($picture)) {
+            $this->pictures->removeElement($picture);
+            // set the owning side to null (unless already changed)
+            if ($picture->getProject() === $this) {
+                $picture->setProject(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImageFiles()
+    {
+        return $this->imageFiles;
+    }
+
+    /**
+     * @param mixed $imageFiles
+     * @return Project
+     */
+    public function setImageFiles($imageFiles): self
+    {
+        foreach ($imageFiles as $imageFile) {
+            $picture = new Picture();
+            $picture->setImageFile($imageFile);
+            $this->addPicture($picture);
+        }
+        $this->imageFiles = $imageFiles;
         return $this;
     }
 }

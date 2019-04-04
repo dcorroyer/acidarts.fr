@@ -2,6 +2,7 @@
 
 namespace App\Listener;
 
+use App\Entity\Picture;
 use App\Entity\Project;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
@@ -45,6 +46,9 @@ class ImageCacheSubscriber implements EventSubscriber {
     {
         // upload only works for Product entities
         if (!$entity instanceof Project) {
+            return;
+        }
+        if (!$entity instanceof Picture) {
             return;
         }
 
