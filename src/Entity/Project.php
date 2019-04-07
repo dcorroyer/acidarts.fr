@@ -30,8 +30,8 @@ class Project
     private $id;
 
     /**
-     * @Assert\Length(min=5, max=191)
-     * @ORM\Column(type="string", length=191)
+     * @Assert\Length(min=5, max=255)
+     * @ORM\Column(type="string", length=255)
      */
     private $title;
 
@@ -41,7 +41,7 @@ class Project
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=191, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $filename;
 
@@ -53,6 +53,11 @@ class Project
      * @Vich\UploadableField(mapping="property_image", fileNameProperty="filename")
      */
     private $thumbFile;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $link;
 
     /**
      * @ORM\Column(type="datetime")
@@ -166,6 +171,24 @@ class Project
         if ($this->thumbFile instanceof UploadedFile) {
             $this->updated_at = new DateTime('now');
         }
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLink()
+    {
+        return $this->link;
+    }
+
+    /**
+     * @param mixed $link
+     * @return Project
+     */
+    public function setLink($link): self
+    {
+        $this->link = $link;
         return $this;
     }
 
