@@ -18,6 +18,7 @@ class ProjectType extends AbstractType
             ->add('thumbFile', FileType::class, [
                 'required' => false
             ])
+            ->add('link')
             ->add('imageFiles', FileType::class, [
                 'required' => false,
                 'multiple' => true

@@ -7,8 +7,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    {% if project.filename %}
+                    {% if project.filename and not project.link %}
                         <img src="{{ vich_uploader_asset(project, 'thumbFile') }}" alt="" class="card-img-top" style="width: 100%; height: auto;">
+                    {% elseif (project.link and project.filename) %}
+                        <iframe width="560" height="315" src="{{ project.link }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     {% else %}
                         <img src="{{ '../images/empty.jpg' }}" alt="" class="card-img-top" style="width: 100%; height: auto;">
                     {% endif %}
