@@ -26,20 +26,6 @@ class ProjectController extends AbstractController
         $this->repository = $repository;
         $this->em = $em;
     }
-
-    /**
-     * @Route("/projects", name="project.index")
-     * @return Response
-     */
-    public function index(): Response
-    {
-        $projects = $this->repository->findAll();
-        return $this->render('project/index.html.twig', [
-            'current_menu' => 'projects',
-            'projects' => $projects
-        ]);
-    }
-
     /**
      * @Route("/projects/{slug}-{id}", name="project.show", requirements={"slug": "[a-z0-9\-]*"})
      * @param Project $project
