@@ -102,9 +102,10 @@ class Project
         return $this->position;
     }
 
-    public function setPosition($position): void
+    public function setPosition($position)
     {
         $this->position = $position;
+        return $this;
     }
 
     public function getTitle(): ?string

@@ -54,6 +54,8 @@ class AdminProjectController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
+            $position = $this->repository->projectCount();
+            $project->setPosition(intval($position[0][1])+1);
             $this->em->persist($project);
             $this->em->flush();
             $this->addFlash('success', 'Le projet a été créé avec succès');
@@ -68,7 +70,7 @@ class AdminProjectController extends AbstractController
     }
 
     /**
-     * @Route("/admin/{id}", name="admin.project.edit", methods="GET|POST")
+     * @Route("/admin/{id}", name="admin.project.edit", methods="GET|POST", requirements={"id"="\d+"})
      * @param Project $project
      * @param Request $request
      * @return Response
@@ -107,7 +109,7 @@ class AdminProjectController extends AbstractController
     }
 
     /**
-     * @Route("/admin/movePosition", name="admin_move_position", methods={"POST"})
+     * @Route("/admin/move/position", name="admin_move_position", methods={"POST"})
      * @param ObjectManager $manager
      * @param Request $request
      * @return Response
