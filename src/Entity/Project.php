@@ -30,6 +30,11 @@ class Project
     private $id;
 
     /**
+     * @ORM\Column(type="integer", name="position")
+     */
+    private $position;
+
+    /**
      * @Assert\Length(min=5, max=255)
      * @ORM\Column(type="string", length=255)
      */
@@ -90,6 +95,17 @@ class Project
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    public function setPosition($position)
+    {
+        $this->position = $position;
+        return $this;
     }
 
     public function getTitle(): ?string

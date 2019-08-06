@@ -12,14 +12,14 @@ class HomeController extends AbstractController
 
     /**
      * @Route("/", name="home")
-     * @param ProjectRepository $repository
+     * @param ProjectRepository $projectRepository
      * @return Response
      */
-    public function index(ProjectRepository $repository): Response
+    public function index(ProjectRepository $projectRepository): Response
     {
-        $projects = $repository->findAll();
         return $this->render('pages/home.html.twig', [
-            'projects' => $projects
+            'projects' => $projectRepository->findBy([],['position'=>'ASC']),
         ]);
     }
 }
+

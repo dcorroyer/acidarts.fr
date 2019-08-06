@@ -20,12 +20,12 @@ class ProjectRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return Project[]
+     * @return int
      */
-    public function findLatest(): array
+    public function projectCount()
     {
         return $this->createQueryBuilder('p')
-            ->setMaxResults(4)
+            ->select('COUNT(p)')
             ->getQuery()
             ->getResult();
     }
