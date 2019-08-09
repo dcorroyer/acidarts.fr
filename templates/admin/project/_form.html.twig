@@ -1,5 +1,32 @@
 {% block javascripts %}
 
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        $('#project-videos').click(function () {
+
+            const index = $('#widgets-countersVideos').val();
+            const tmpl = $('#project_videos').data('prototype').replace(/_name_/g, index)
+            $('#project_videos').append(tmpl)
+            $('#widgets-countersVideos').val(parseInt(index) + 1)
+            handleDeleteButtons();
+            updateVideos();
+
+        })
+        function handleDeleteButtons() {
+            $('button[data-action="deleteVideos"]').click(function () {
+                const target = this.dataset.target;
+                $(target).remove();
+                updateVideos()
+            })
+
+        }
+        function updateVideos()
+        {
+            const count = $('.countVideos').length;
+            $('#widgets-countersVideos).val(parseInt(count));
+        }
+    </script>
+
     <script src='https://cloud.tinymce.com/5/tinymce.min.js?apiKey=your_API_key'></script>
     <script>
         tinymce.init({
@@ -32,12 +59,38 @@
 <div class="container mb-4">
 
     {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_widget(form.videos) }}
 
     <button class="btn btn-primary">{{ button|default('Enregistrer') }}</button>
     <a href="{{ path('admin.project.index') }}" class="btn btn-warning">Annuler</a>
 
     {{ form_end(form) }}
+
+    {% block _project_videos_widget %}
+        <input type="hidden" id="widgets-counterVideos" value="0" class="mt-2">
+        <div class="form-group AddVideos mb-3">
+            <button type="button" id="project-videos" class="btn  btn-info mb-2">Ajouter une Vidéo </button>
+        </div>
+        {{ form_widget(form) }}
+    {% endblock %}
+
+    {% block _project_videos_entry_row %}
+        {{ form_widget(form) }}
+    {% endblock %}
+
+    {% block _project_videos_entry_widget %}
+        <div class="form-group text-center countVideos" id="block_{{ id }}">
+            <div class="row">
+                <div class="col-md-8 text-center">
+                    {{ form_widget(form) }}
+                </div>
+                <div class="col-md-4 text-center mt-4">
+                    <button type="button" data-action="deleteFile" data-target="#block_{{ id }}" class="btn btn-danger">X</button>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
 </div>
 
 {% if project.filename %}

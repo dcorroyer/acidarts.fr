@@ -5,7 +5,6 @@ use App\Entity\Project;
 use App\Form\ProjectType;
 use App\Repository\ProjectRepository;
 use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -54,6 +53,9 @@ class AdminProjectController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
+            foreach($project->getVideos() as $video){
+                $video->addVideo($project);
+            }
             $position = $this->repository->projectCount();
             $project->setPosition(intval($position[0][1])+1);
             $this->em->persist($project);

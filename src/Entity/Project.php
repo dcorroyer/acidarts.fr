@@ -80,6 +80,11 @@ class Project
     private $pictures;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Video", mappedBy="project", orphanRemoval=true, cascade={"persist"})
+     */
+    private $videos;
+
+    /**
      * @Assert\All({
      *     @Assert\Image(mimeTypes="image/jpeg")
      *     })
@@ -90,6 +95,7 @@ class Project
     {
         $this->created_at = new DateTime();
         $this->pictures = new ArrayCollection();
+        $this->videos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -245,6 +251,47 @@ class Project
             // set the owning side to null (unless already changed)
             if ($picture->getProject() === $this) {
                 $picture->setProject(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Video[]
+     */
+    public function getVideos(): Collection
+    {
+        return $this->videos;
+    }
+
+    /**
+     * @param string|null $videos
+     * @return Project
+     */
+    public function setVideos(?string $videos): Project
+    {
+        $this->videos = $videos;
+        return $this;
+    }
+
+    public function addVideo(Video $video): self
+    {
+        if (!$this->videos->contains($video)) {
+            $this->videos[] = $video;
+            $video->setVideoname($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVideo(Video $video): self
+    {
+        if ($this->videos->contains($video)) {
+            $this->videos->removeElement($video);
+            // set the owning side to null (unless already changed)
+            if ($video->getProject() === $this) {
+                $video->setProject(null);
             }
         }
 
