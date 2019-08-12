@@ -53,9 +53,6 @@ class AdminProjectController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-            foreach($project->getVideos() as $video){
-                $video->addVideo($project);
-            }
             $position = $this->repository->projectCount();
             $project->setPosition(intval($position[0][1])+1);
             $this->em->persist($project);

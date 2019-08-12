@@ -1,29 +1,70 @@
 {% block javascripts %}
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script>
-        $('#project-videos').click(function () {
+    <script type="text/javascript">
+        var $collectionHolder;
 
-            const index = $('#widgets-countersVideos').val();
-            const tmpl = $('#project_videos').data('prototype').replace(/_name_/g, index)
-            $('#project_videos').append(tmpl)
-            $('#widgets-countersVideos').val(parseInt(index) + 1)
-            handleDeleteButtons();
-            updateVideos();
+        // setup an "add a tag" link
+        var $addTagButton = $('<a href="#" class="btn btn-primary">Ajouter</a>');
+        var $newLinkLi = $('<li></li>').append($addTagButton);
 
-        })
-        function handleDeleteButtons() {
-            $('button[data-action="deleteVideos"]').click(function () {
-                const target = this.dataset.target;
-                $(target).remove();
-                updateVideos()
-            })
+        jQuery(document).ready(function() {
+            // Get the ul that holds the collection of tags
+            $collectionHolder = $('ul.videos');
 
+            // add the "add a tag" anchor and li to the tags ul
+            $collectionHolder.append($newLinkLi);
+
+            // count the current form inputs we have (e.g. 2), use that as the new
+            // index when inserting a new item (e.g. 2)
+            $collectionHolder.data('index', $collectionHolder.find(':input').length);
+
+            $addTagButton.on('click', function(e) {
+                // add a new tag form (see next code block)
+                addTagForm($collectionHolder, $newLinkLi);
+            });
+
+            $collectionHolder.find('li').each(function() {
+                addTagFormDeleteLink($(this));
+            });
+        });
+
+        function addTagForm($collectionHolder, $newLinkLi) {
+            // Get the data-prototype explained earlier
+            var prototype = $collectionHolder.data('prototype');
+
+            // get the new index
+            var index = $collectionHolder.data('index');
+
+            var newForm = prototype;
+            // You need this only if you didn't set 'label' => false in your tags field in TaskType
+            // Replace '__name__label__' in the prototype's HTML to
+            // instead be a number based on how many items we have
+            // newForm = newForm.replace(/__name__label__/g, index);
+
+            // Replace '__name__' in the prototype's HTML to
+            // instead be a number based on how many items we have
+            newForm = newForm.replace(/__name__/g, index);
+
+            // increase the index with one for the next item
+            $collectionHolder.data('index', index + 1);
+
+            // Display the form in the page in an li, before the "Add a tag" link li
+            var $newFormLi = $('<li></li>').append(newForm);
+            $newLinkLi.before($newFormLi);
+
+            // add a delete link to the new form
+            addTagFormDeleteLink($newFormLi);
         }
-        function updateVideos()
-        {
-            const count = $('.countVideos').length;
-            $('#widgets-countersVideos).val(parseInt(count));
+
+        function addTagFormDeleteLink($tagFormLi) {
+            var $removeFormButton = $('<a href="#" class="btn btn-danger">Supprimer</a>');
+            $tagFormLi.append($removeFormButton);
+
+            $removeFormButton.on('click', function(e) {
+                // remove the li for the tag form
+                $tagFormLi.remove();
+            });
         }
     </script>
 
@@ -58,38 +99,19 @@
 
 <div class="container mb-4">
 
+    {% form_theme form _self %}
     {{ form_start(form) }}
-    {{ form_widget(form.videos) }}
+
+    <ul class="videos" data-prototype="{{ form_widget(form.videos.vars.prototype)|e('html_attr') }}">
+        {% for video in project.videos %}
+            <li>{{ form_row(form.videos) }}</li>
+        {% endfor %}
+    </ul>
 
     <button class="btn btn-primary">{{ button|default('Enregistrer') }}</button>
     <a href="{{ path('admin.project.index') }}" class="btn btn-warning">Annuler</a>
 
     {{ form_end(form) }}
-
-    {% block _project_videos_widget %}
-        <input type="hidden" id="widgets-counterVideos" value="0" class="mt-2">
-        <div class="form-group AddVideos mb-3">
-            <button type="button" id="project-videos" class="btn  btn-info mb-2">Ajouter une Vidéo </button>
-        </div>
-        {{ form_widget(form) }}
-    {% endblock %}
-
-    {% block _project_videos_entry_row %}
-        {{ form_widget(form) }}
-    {% endblock %}
-
-    {% block _project_videos_entry_widget %}
-        <div class="form-group text-center countVideos" id="block_{{ id }}">
-            <div class="row">
-                <div class="col-md-8 text-center">
-                    {{ form_widget(form) }}
-                </div>
-                <div class="col-md-4 text-center mt-4">
-                    <button type="button" data-action="deleteFile" data-target="#block_{{ id }}" class="btn btn-danger">X</button>
-                </div>
-            </div>
-        </div>
-    {% endblock %}
 
 </div>
 
