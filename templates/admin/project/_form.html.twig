@@ -25,7 +25,9 @@
             });
 
             $collectionHolder.find('li').each(function() {
-                addTagFormDeleteLink($(this));
+                if ($newLinkLi >= 0) {
+                    addTagFormDeleteLink($(this));
+                }
             });
         });
 
@@ -101,6 +103,12 @@
 
     {% form_theme form _self %}
     {{ form_start(form) }}
+
+    {{ form_row(form.title) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.thumbFile) }}
+    {{ form_row(form.link) }}
+    {{ form_row(form.imageFiles) }}
 
     <ul class="videos" data-prototype="{{ form_widget(form.videos.vars.prototype)|e('html_attr') }}">
         {% for video in project.videos %}

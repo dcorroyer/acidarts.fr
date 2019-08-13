@@ -1,12 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% form_theme form _self %}
 {% block body %}
 
     <div class="container mt-4">
         <h2>Editer le projet</h2>
         {{ include('admin/project/_form.html.twig', {button: 'Editer'}) }}
-
     </div>
 
 {% endblock %}

@@ -22,7 +22,7 @@ class Video
     private $videoname;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="videos")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="videos", cascade={"persist"})
      */
     private $project;
 

@@ -214,12 +214,12 @@ class Project
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?DateTimeInterface
     {
         return $this->updated_at;
     }
 
-    public function setUpdatedAt(\DateTimeInterface $updated_at): self
+    public function setUpdatedAt(DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
 
@@ -265,21 +265,11 @@ class Project
         return $this->videos;
     }
 
-    /**
-     * @param string|null $videos
-     * @return Project
-     */
-    public function setVideos(?string $videos): Project
-    {
-        $this->videos = $videos;
-        return $this;
-    }
-
     public function addVideo(Video $video): self
     {
         if (!$this->videos->contains($video)) {
             $this->videos[] = $video;
-            $video->setVideoname($this);
+            $video->setProject($this);
         }
 
         return $this;
