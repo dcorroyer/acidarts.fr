@@ -1,57 +1,69 @@
 {% extends 'base.html.twig' %}
 
-{% block title 'Gérer les projets' %}
-
 {% block body %}
-    <div class="container mt-4">
-        <h1>Gérer les projets</h1>
-
-        {% for message in app.flashes('success') %}
-
-            <div class="alert alert-success">
-                {{ message }}
-            </div>
-
-        {% endfor %}
-
-        <table class="table table-striped" id="mytable">
-            <thead>
-            <tr>
-                <th>Titre</th>
-                <th>Id</th>
-                <th>Position</th>
-                <th>Move Positions</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for project in projects %}
-            <tr>
-                <td>{{ project.title }}</td>
-                <td>{{ project.id }}</td>
-                <td>{{ project.position }}</td>
-                <td>
-                    <a href="#" onclick="up({{ project.id }});" class="move up">UP</a><br>
-                    <a href="#" onclick="down({{ project.id }});" class="move down">DOWN</a>
-                </td>
-                <td>
-                    <a href="{{ path('admin.project.edit', {id: project.id}) }}" class="btn btn-secondary">Editer</a>
-                    <form method="post" action="{{ path('admin.project.delete', {id: project.id}) }}" style="display: inline-block" onsubmit="return confirm('Êtes vous vraiment sûr ?')">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ project.id) }}">
-                        <button class="btn btn-danger">Supprimer</button>
-                    </form>
-                </td>
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-
-        <div class="text-right">
-            <a href="{{ path('admin.project.new') }}" class="btn btn-primary">Créer un nouveau projet</a>
+    <section>
+        <div class="container mt-2">
+            <h4><a href="{{ path('home') }}"><span>Acidarts ></span></a> <a href="{{ path('admin.project.index') }}">Administration</a></h4>
+            <button class="btn btn-outline-secondary" id="logout_button"><a href="{{ path('logout') }}">Se déconnecter</a></button>
+            <h1>Projects</h1>
         </div>
 
-    </div>
+        <div class="container mt-4">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            <div class="col-md-8" id="projects_list">
+                <div class="panel-heading mb-2">
+                    <div class="row">
+                        <div class="col col-xs-6 text-right">
+                            <a href="{{ path('admin.project.new') }}"><img src="{{ asset('images/projects/add.svg') }}" alt="" class="project_list_button"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-hover" id="mytable">
+                        <thead class="thead-dark">
+                        <tr class="text-center">
+                            <th class="col-xs-8">Title</th>
+                            <th class="col-xs-2">Position</th>
+                            <th class="col-xs-2">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for project in projects %}
+                            <tr class="text-center">
+                                <td class="col-xs-8 text-left align-middle">{{ project.title }}</td>
+                                <td class="col-xs-2 align-middle">
+                                    <a href="" onclick="up({{ project.id }});" class="move up"><i class="fas fa-arrow-up"></i></a><br>
+                                    <a href="" onclick="down({{ project.id }});" class="move down"><i class="fas fa-arrow-down"></i></a>
+                                </td>
+                                <td class="col-xs-2">
+                                    <div class="row">
+                                        <div class="col">
+                                            <a href="{{ path('admin.project.edit', {id: project.id}) }}"><img src="{{ asset('images/projects/edit.svg') }}" alt="" class="project_list_button"></a>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1">
+                                        <div class="col">
+                                            <form method="post" action="{{ path('admin.project.delete', {id: project.id}) }}" style="display: inline-block" onsubmit="return confirm('Êtes vous vraiment sûr ?')">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ project.id) }}">
+                                                <input type="image" src="{{ asset('images/projects/delete.svg') }}" alt="" class="project_list_button">
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
 
 {% block javascripts %}

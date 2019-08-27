@@ -1,0 +1,112 @@
+.img-social {
+    width: 6.5%;
+}
+
+#contact_content {
+    margin-top: 50px;
+}
+
+#contact .form-group input {
+    border-radius: 0;
+    border-top: 0.5px solid rgba(77, 77, 77, 0.125);
+    border-left: 0.5px solid rgba(77, 77, 77, 0.25);
+    border-right: 0.5px solid rgba(77, 77, 77, 0.25);
+    border-bottom: 0;
+}
+
+#contact .form-group textarea {
+    border-radius: 0;
+    border-top: 0.5px solid rgba(77, 77, 77, 0.125);
+    border-left: 0.5px solid rgba(77, 77, 77, 0.25);
+    border-right: 0.5px solid rgba(77, 77, 77, 0.25);
+    border-bottom: 0.5px solid rgba(77, 77, 77, 0.25);
+}
+
+.social-title {
+    font-size: 0.875em;
+    font-weight: bold;
+    color: rgba(77, 77, 77, 0.5);
+    margin-bottom: 0;
+}
+
+.contact-description {
+    font-size: 0.875em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.contact-about {
+    width: 75%;
+}
+
+.contact textarea {
+    font-family: Poppins, "Helvetica Neue", Arial, sans-serif;
+    height: 250px;
+}
+
+.surname, .name, .email, .subject {
+    width: 75%;
+    box-sizing: border-box;
+    padding: 1.25em;
+}
+
+.message {
+    width: 75%;
+    min-height: 250px;
+    box-sizing: border-box;
+    padding: 1.5em;
+}
+
+#button {
+    display: block;
+    position: relative;
+
+    margin: 20px 0;
+    border-radius: 3px;
+    border: 0;
+
+    background: white;
+
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#button:hover {
+    cursor: pointer;
+}
+
+#button:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: -8px;
+    background: #000;
+    transition: all 0.3s ease-in;
+}
+
+#button:after {
+    width: 0;
+    height: 2px;
+}
+
+#button:hover:before {height: 100%;}
+#button:hover:after {width: 100%;}
+
+/*RESPONSIVE*/
+
+@media screen and (max-width: 991px) {
+    #contact .form-group input, #contact .form-group textarea {
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    #button {
+        padding-left: 20px;
+    }
+
+    .contact-about {
+        width: 87.5%;
+        margin: 50px auto 0 auto;
+    }
+}

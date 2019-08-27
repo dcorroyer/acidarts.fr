@@ -1,0 +1,19 @@
+#logout_button {
+    margin-left: 30px;
+}
+
+#projects_list {
+    margin: 50px auto 0 auto;
+    border-radius: 10px;
+}
+
+.project_list_button {
+    width: 50px;
+    transform: scale(1);
+    transition-duration: 0.15s;
+}
+
+.project_list_button:hover {
+    transform: scale(1.05);
+    transition-duration: 0.2s;
+}

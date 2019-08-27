@@ -5,6 +5,7 @@ use App\Entity\Project;
 use App\Form\ProjectType;
 use App\Repository\ProjectRepository;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\NonUniqueResultException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -45,6 +46,7 @@ class AdminProjectController extends AbstractController
      * @Route("/admin/project/create", name="admin.project.new")
      * @param Request $request
      * @return Response
+     * @throws NonUniqueResultException
      */
     public function new(Request $request)
     {
@@ -54,7 +56,7 @@ class AdminProjectController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()) {
             $position = $this->repository->projectCount();
-            $project->setPosition(intval($position[0][1])+1);
+            $project->setPosition(intval($position) + 1);
             $this->em->persist($project);
             $this->em->flush();
             $this->addFlash('success', 'Le projet a été créé avec succès');
@@ -101,6 +103,11 @@ class AdminProjectController extends AbstractController
     {
         if($this->isCsrfTokenValid('delete' . $project->getId(), $request->get('_token'))) {
             $this->em->remove($project);
+            $projects = $this->repository->projectsHigherPosition($project->getPosition());
+            foreach ($projects as $project)
+            {
+                $project->setPosition($project->getPosition() - 1);
+            }
             $this->em->flush();
             $this->addFlash('success', 'Le projet a été supprimé avec succès');
         }

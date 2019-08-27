@@ -31,14 +31,14 @@ class ContactController extends AbstractController
             $message
                 ->setTo('dylan.corroyer@wanadoo.fr')
                 ->setFrom('contact.dcorroyer@gmail.com')
-                ->setSubject('DCORROYER: ' . $contact->getSubject())
+                ->setSubject('Acidarts: ' . $contact->getSubject())
                 ->setBody($bodyHtml = $this->renderView('emails/contact.html.twig', [
                     'contact' => $contact,
                 ]), 'text/html');
 
             $mailer->send($message);
             $this->addFlash('success', 'Votre Email a bien été envoyé !');
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('contact.index');
 
         }
 

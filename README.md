@@ -1,12 +1,14 @@
-"# dcorroyer" 
+### Project acidarts.fr
 
-A Symfony 4 application to customer to be able to stand alone their portfolio by adding projets theirself.
+FRONT TODO:
 
-Composed of:
+    new/edit form
+    responsive
+    
+BACK TODO:
 
-<ul>
-  <li>Project managing</li>
-  <li>Projects page</li>
-  <li>Description page</li>
-  <li>Contact form</li>
-</ul>
+    Upload miniature videos (video miniature et video projet)
+
+IF FINISHED:
+
+    Description page manageable

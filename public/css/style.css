@@ -1,0 +1,150 @@
+/* GENERAL */
+
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+* {
+    margin: 0;
+    padding: 0;
+    -moz-box-sizing: border-box; box-sizing: border-box;
+}
+
+body {
+    font-family: Poppins, "Helvetica Neue", Arial, sans-serif;
+    min-height: 100%;
+}
+
+body, html{
+    height: 100%;
+    color: #000;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    width: 20%;
+    min-width: 100px;
+}
+
+::selection {
+    color: white;
+    background-color: #444;
+}
+
+a {
+    text-decoration: none !important;
+    color: black !important;
+}
+
+.logo {
+    text-transform: uppercase;
+    float: left;
+    width: 250px;
+}
+
+.container {
+    max-width: 1280px;
+    width: 90%;
+    margin: 0 auto;
+    padding: auto 10px;
+}
+
+.main {
+    min-height: 100%;
+    position: relative;
+}
+
+input, textarea {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+input::placeholder, textarea::placeholder {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-group {
+    margin: 0 auto;
+}
+
+/* CONTENT */
+
+.content {
+    padding-bottom: 130px;
+}
+
+/* SECTIONS */
+
+.library {
+    background-color: rgba(77, 77, 77, 0.1);
+    margin: 60px 0;
+    padding: 60px 0;
+}
+
+section h1 {
+    margin: 30px 0 0 0;
+    font-size: 50px;
+    font-weight: 600;
+}
+
+section h4 {
+    font-size: 0.875em;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+section h2 {
+    font-style: italic;
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-top: -3.5px;
+}
+
+section h4 span {
+    color: rgba(77, 77, 77, 0.5);
+}
+
+section h4, h1, h2, h3 {
+    padding-left: 30px;
+}
+
+/*RESPONSIVE*/
+
+@media screen and (max-width: 991px) {
+    .container {
+        width: 100%;
+    }
+
+    .logo {
+        float: left;
+        margin-left: 5px;
+        padding: 10px 0;
+    }
+
+    .background {
+        width: 30%;
+        min-width: 100px;
+    }
+
+    .content {
+        padding-top: 30px;
+    }
+
+    .snip1573 {
+        width: 100%;
+    }
+
+    .project {
+        width: 100%;
+    }
+
+    section h1 {
+        margin: 20px 0;
+    }
+
+    section h4, h1 {
+        padding-left: 20px;
+    }
+
+}

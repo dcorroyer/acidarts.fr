@@ -71,11 +71,14 @@
                 'autolink',
                 'tinymcespellchecker',
                 'anchor',
+                'lineheight'
             ],
             toolbar: [
                 'undo redo | bold italic underline | fontselect fontsizeselect',
-                'forecolor backcolor | anchor link'
+                'forecolor backcolor | anchor link | lineheightselect'
             ],
+            forced_root_block: 'p',
+            lineheight_formats: "8pt 9pt 10pt 11pt 12pt 14pt 16pt 18pt 20pt 22pt 24pt 26pt 36pt",
         });
     </script>
     <style type="text/css">
@@ -89,18 +92,24 @@
 
 {% block body %}
 
-    <div class="container mt-4">
-        <h2>Créer le projet</h2>
+    <section>
+        <div class="container mt-2">
+            <h4><a href="{{ path('home') }}"><span>Acidarts ></span></a> <a href="{{ path('admin.project.index') }}">Administration</a></h4>
+            <h1>New project</h1>
+        </div>
 
-        <div class="container mb-4" id="vid">
+        <!-- PROJECT EDITING -->
+        <div class="container mt-2">
 
             {% form_theme form _self %}
             {{ form_start(form) }}
 
             {{ form_row(form.title) }}
+            {{ form_row(form.type) }}
             {{ form_row(form.description) }}
             {{ form_row(form.thumbFile) }}
             {{ form_row(form.link) }}
+            {{ form_row(form.linktitle) }}
             {{ form_row(form.imageFiles) }}
             {{ form_label(form.videos) }}
 

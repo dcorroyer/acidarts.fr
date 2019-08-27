@@ -1,0 +1,262 @@
+#projects_block {
+    margin-top: 55px;
+}
+
+#project_content {
+    margin-top: 60px;
+}
+
+.col-md-4, .project, .card-body {
+    width: 100%;
+    padding: 0;
+}
+
+.project {
+    margin: 0 auto;
+}
+
+.project-img {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.project-identification {
+    width: 80%;
+    margin: 50px auto 0 auto;
+    padding-left: 15px;
+}
+
+.project-title {
+    font-size: 0.875em;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.project-type {
+    font-size: 0.875em;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: rgba(77, 77, 77, 0.5);
+}
+
+.project-type-show {
+    margin: 0 auto;
+    font-size: 0.875em;
+    font-weight: 600;
+    color: rgba(77, 77, 77, 0.5);
+}
+
+.project-video img {
+    width: 90%;
+}
+
+.project-img-library {
+    width: 100%;
+}
+
+.project-title-show {
+    font-size: 0.875em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.project-description-show {
+    text-align: justify;
+}
+
+.project-about {
+    width: 85%;
+}
+
+#projects_videos {
+    width: 50%;
+    margin: 0 auto;
+}
+
+#links {
+    margin: 50px auto;
+
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-flex-flow: row wrap;
+    -moz-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    -o-flex-flow: row wrap;
+    flex-flow: row wrap;
+
+    justify-content: flex-start;
+}
+
+#links a {
+    width: 32.5%;
+    margin: 3px 0.83% 3px 0;
+}
+
+/* ANIMATION IMAGE */
+
+.snip1573 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+}
+
+.snip1573 * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+}
+
+.snip1573:before,
+.snip1573:after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+    background-color: #FFFFFF;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+    content: '';
+    opacity: 1;
+    z-index: 1;
+}
+
+.snip1573:before {
+    -webkit-transform: skew(60deg) translateX(-155%);
+    transform: skew(60deg) translateX(-155%);
+}
+
+.snip1573:after {
+    -webkit-transform: skew(0deg) translateX(155%);
+    transform: skew(0deg) translateX(155%);
+}
+
+.snip1573 img {
+    backface-visibility: hidden;
+    max-width: 100%;
+    vertical-align: top;
+}
+
+.snip1573 figcaption {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    z-index: 2;
+    -webkit-transform: translate(-50%, -50%) scale(0.5);
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+}
+
+.snip1573 h3 {
+    background-color: #FFFFFF;
+    color: #000;
+    border-radius: 50%;
+    font-size: 1em;
+    font-weight: 600;
+    letter-spacing: 0px;
+    margin: 0;
+    padding: 12px 20px;
+    text-transform: uppercase;
+}
+
+.snip1573 a {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+}
+
+.snip1573:hover > img,
+.snip1573.hover > img {
+    opacity: 0.8;
+    -webkit-transition: all 250ms ease-in;
+    -webkit-transform: scale(1.1);
+}
+
+.snip1573:hover:before,
+.snip1573.hover:before {
+    -webkit-transform: skew(45deg) translateX(-100%);
+    transform: skew(45deg) translateX(-100%);
+}
+
+.snip1573:hover:after,
+.snip1573.hover:after {
+    -webkit-transform: skew(45deg) translateX(100%);
+    transform: skew(45deg) translateX(100%);
+}
+
+.snip1573:hover figcaption,
+.snip1573.hover figcaption {
+    -webkit-transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+/* FIN ANIMATION IMAGE */
+
+/*RESPONSIVE*/
+
+@media screen and (max-width: 991px) {
+    #links {
+        justify-content: space-around;
+    }
+
+    #links a {
+        width: 49.33%;
+        margin: 0;
+    }
+
+    #links {
+        justify-content: space-around;
+    }
+
+    #links a {
+        width: 90%;
+        margin: 0;
+    }
+
+    .snip1573 {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .project {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    #projects_block {
+        margin-top: 20px;
+    }
+
+    section h4, h1 {
+        padding-left: 0;
+    }
+
+    .project-about {
+        width: 80%;
+        margin: 50px auto 0 auto;
+    }
+
+    .project-img-library {
+        margin-top: 8px;
+    }
+
+    #projects_videos {
+        width: 100%;
+        margin: 0 auto;
+    }
+}

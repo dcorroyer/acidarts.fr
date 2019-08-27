@@ -15,11 +15,13 @@ class ProjectType extends AbstractType
     {
         $builder
             ->add('title')
+            ->add('type')
             ->add('description')
             ->add('thumbFile', FileType::class, [
                 'required' => false
             ])
             ->add('link')
+            ->add('linktitle')
             ->add('imageFiles', FileType::class, [
                 'required' => false,
                 'multiple' => true
@@ -31,7 +33,6 @@ class ProjectType extends AbstractType
                 'allow_delete' => true,
                 'by_reference' => false
             ])
-
         ;
     }
 

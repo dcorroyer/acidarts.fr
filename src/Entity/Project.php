@@ -41,6 +41,12 @@ class Project
     private $title;
 
     /**
+     * @Assert\Length(min=5, max=255)
+     * @ORM\Column(type="string", length=255)
+     */
+    private $type;
+
+    /**
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
@@ -63,6 +69,11 @@ class Project
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $link;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $linktitle;
 
     /**
      * @ORM\Column(type="datetime")
@@ -122,6 +133,18 @@ class Project
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }
@@ -211,6 +234,25 @@ class Project
     public function setLink($link): self
     {
         $this->link = $link;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLinktitle()
+    {
+        return $this->linktitle;
+    }
+
+    /**
+     * @param mixed $linktitle
+     * @return Project
+     */
+    public function setLinktitle($linktitle): self
+    {
+        $this->linktitle = $linktitle;
+
         return $this;
     }
 

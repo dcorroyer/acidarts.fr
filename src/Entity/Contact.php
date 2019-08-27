@@ -18,6 +18,13 @@ class Contact
      * @Assert\NotBlank()
      * @Assert\Length(min="2", max="100")
      */
+    private $lastname;
+
+    /**
+     * @var string|null
+     * @Assert\NotBlank()
+     * @Assert\Length(min="2", max="100")
+     */
     private $subject;
 
     /**
@@ -49,6 +56,24 @@ class Contact
     public function setName(?string $name): Contact
     {
         $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * @param string|null $lastname
+     * @return Contact
+     */
+    public function setLastname(?string $lastname): Contact
+    {
+        $this->lastname = $lastname;
         return $this;
     }
 

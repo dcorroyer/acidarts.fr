@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Project;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -21,13 +22,29 @@ class ProjectRepository extends ServiceEntityRepository
 
     /**
      * @return int
+     * @throws NonUniqueResultException
      */
     public function projectCount()
     {
         return $this->createQueryBuilder('p')
             ->select('COUNT(p)')
             ->getQuery()
-            ->getResult();
+            ->getSingleScalarResult();
+    }
+
+    /**
+     * @param $position
+     * @return Project[]
+     */
+    public function projectsHigherPosition($position): array
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->andWhere('p.position > :position')
+            ->setParameter('position', $position)
+            ->orderBy('p.position', 'ASC')
+            ->getQuery();
+
+        return $qb->execute();
     }
 
     // /**
