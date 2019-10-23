@@ -1,14 +1,30 @@
-<div class="card mb-4 mt-4">
-    {% if project.filename %}
-        <img src="{{ vich_uploader_asset(project, 'thumbFile') }}" alt="" class="card-img-top" style="width: 100%; height: auto;">
-    {% else %}
-        <img src="{{ 'images/empty.jpg' }}" alt="" class="card-img-top" style="width: 100%; height: auto;">
-    {% endif %}
+<div class="project">
     <div class="card-body">
-        <h5 class="card-title">
-            <a href="{{ path('project.show', {slug: project.slug, id: project.id}) }}">
-                {{ project.title }}
-            </a>
-        </h5>
+        <div class="identification">
+            <p class="title">
+                <a href="{{ path('project.show', {slug: project.slug, id: project.id}) }}">
+                    {{ project.title }}
+                </a></p>
+            <p class="type">{{ project.type }}</p>
+        </div>
+        <div class="img">
+            {% if project.filename %}
+                <figure class="snip1573">
+                    <img src="{{ vich_uploader_asset(project, 'thumbFile') }}" alt="">
+                    <figcaption>
+                        <h3>+</h3>
+                    </figcaption>
+                    <a href="{{ path('project.show', {slug: project.slug, id: project.id}) }}"></a>
+                </figure>
+            {% else %}
+                <figure class="snip1573">
+                    <img src="{{ 'images/empty.jpg' }}" alt="">
+                    <figcaption>
+                        <h3>+</h3>
+                    </figcaption>
+                    <a href="{{ path('project.show', {slug: project.slug, id: project.id}) }}"></a>
+                </figure>
+            {% endif %}
+        </div>
     </div>
 </div>

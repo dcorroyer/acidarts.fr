@@ -15,6 +15,7 @@ class ProjectType extends AbstractType
     {
         $builder
             ->add('title')
+            ->add('type')
             ->add('description')
             ->add('thumbFile', FileType::class, [
                 'required' => false

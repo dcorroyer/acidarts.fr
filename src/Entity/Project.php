@@ -41,6 +41,12 @@ class Project
     private $title;
 
     /**
+     * @Assert\Length(min=5, max=255)
+     * @ORM\Column(type="string", length=255)
+     */
+    private $type;
+
+    /**
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
@@ -122,6 +128,18 @@ class Project
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }

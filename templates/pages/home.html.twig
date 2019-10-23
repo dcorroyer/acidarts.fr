@@ -1,17 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title 'Projects' %}
-
 {% block body %}
-    <div class="container mt-4">
-        <h1>Les projets</h1>
 
-        <div class="row">
-            {% for project in projects %}
-                <div class="col-md-4">
-                    {% include 'project/_project.html.twig' %}
-                </div>
-            {% endfor %}
+    <section>
+        <div class="container mt-2">
+            <h4><a href="{{ path('home') }}"><span>Acidarts ></span></a> Projects</h4>
+            <h1>Projects</h1>
+
+            <div class="row">
+                {% for project in projects %}
+                    <div class="col-md-4">
+                        {% include 'project/_project.html.twig' %}
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-    </div>
+    </section>
 {% endblock %}
