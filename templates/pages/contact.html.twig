@@ -1,12 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title 'Dcorroyer' %}
-
 {% block body %}
-
-    <div class="jumbotron text-center">
-        <h1>Bienvenue</h1>
-    </div>
 
     <div class="container">
 
@@ -26,7 +20,15 @@
 
         {% endif %}
 
-    <div class="container mt-4">
+    </div>
+
+    <section>
+        <div class="container mt-2">
+            <h4><a href="{{ path('home') }}"><span>Acidarts ></span></a> Contact</h4>
+            <h1>Contact</h1>
+        </div>
+
+    {#<div class="container mt-4">
         <h2>Contact</h2>
         <div class="container mb-4 p-4">
             <div class="card-body">
@@ -36,6 +38,6 @@
                 {{ form_end(form) }}
             </div>
         </div>
-    </div>
+    </div>#}
 
 {% endblock %}

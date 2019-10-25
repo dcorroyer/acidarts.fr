@@ -2,29 +2,22 @@
     <div class="card-body">
         <div class="identification">
             <p class="title">
-                <a href="{{ path('project.show', {slug: project.slug, id: project.id}) }}">
-                    {{ project.title }}
-                </a></p>
+                <a href="{{ path('project.show', {slug: project.slug, id: project.id}) }}">{{ project.title }}</a>
+            </p>
             <p class="type">{{ project.type }}</p>
         </div>
         <div class="img">
-            {% if project.filename %}
-                <figure class="snip1573">
+            <figure class="snip1573">
+                {% if project.filename %}
                     <img src="{{ vich_uploader_asset(project, 'thumbFile') }}" alt="">
-                    <figcaption>
-                        <h3>+</h3>
-                    </figcaption>
-                    <a href="{{ path('project.show', {slug: project.slug, id: project.id}) }}"></a>
-                </figure>
-            {% else %}
-                <figure class="snip1573">
+                {% else %}
                     <img src="{{ 'images/empty.jpg' }}" alt="">
-                    <figcaption>
-                        <h3>+</h3>
-                    </figcaption>
-                    <a href="{{ path('project.show', {slug: project.slug, id: project.id}) }}"></a>
-                </figure>
-            {% endif %}
+                {% endif %}
+                <figcaption>
+                    <h3>+</h3>
+                </figcaption>
+                <a href="{{ path('project.show', {slug: project.slug, id: project.id}) }}"></a>
+            </figure>
         </div>
     </div>
 </div>
