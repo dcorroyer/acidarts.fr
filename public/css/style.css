@@ -14,7 +14,7 @@ body {
 }
 
 body, html{
-    height:100%;
+    height: 100%;
     color: #000;
 }
 
@@ -123,12 +123,32 @@ section h4 span {
     color: rgba(77, 77, 77, 0.5);
 }
 
-section h4, h1, h2 {
+section h4, h1, h2, h3 {
     padding-left: 30px;
+}
+
+#logout_button {
+    margin-left: 30px;
 }
 
 #projects_bar {
     margin-top: 55px;
+}
+
+#projects_list {
+    margin: 50px auto 0 auto;
+    border-radius: 10px;
+}
+
+.project_list_button {
+    width: 50px;
+    transform: scale(1);
+    transition-duration: 0.15s;
+}
+
+.project_list_button:hover {
+    transform: scale(1.05);
+    transition-duration: 0.2s;
 }
 
 .col-md-4, .project, .card-body {
@@ -303,6 +323,57 @@ footer p {
     font-size: 11px;
 }
 
+/* LOGIN FORM */
+
+.login-container{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.login-form-1{
+    padding: 5%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+.login-form-1 h3{
+    text-align: center;
+    color: #333;
+}
+
+.login-container form{
+    padding: 10%;
+}
+
+.btnSubmit
+{
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+}
+
+.login-form-1 .btnSubmit{
+    font-weight: 600;
+    color: #fff;
+    background-color: #0062cc;
+}
+
+.btnSubmit:hover {
+    background-color: #444;
+    color: #fff;
+}
+
+.login-form-1 .ForgetPwd{
+    color: #0062cc;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+#login_form {
+    margin: 0 auto;
+}
+
 /*RESPONSIVE*/
 
 @media screen and (max-width: 991px) {
@@ -320,6 +391,7 @@ footer p {
         margin-top: 10px;
         text-align: center;
         position:absolute;
+        z-index: 2;
     }
 
     nav ul {
@@ -331,7 +403,6 @@ footer p {
     }
 
     nav ul li {
-
         margin-right: 0;
     }
 
@@ -376,5 +447,9 @@ footer p {
 
     .content {
         padding-top: 30px;
+    }
+
+    form img {
+        margin-top: -20px;
     }
 }

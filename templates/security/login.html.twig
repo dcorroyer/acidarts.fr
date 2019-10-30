@@ -1,31 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title 'Se connecter' %}
-
 {% block body %}
-    <div class="container mt-4">
+    <section>
+        <div class="container">
 
-        <h2 class="mb-4">Administration - Connexion</h2>
+            {% if error %}
+                <div class="alert alert-danger">
+                    {{ error.messageKey | trans(error.messageData, 'security') }}
+                </div>
+            {% endif %}
 
-        {% if error %}
-            <div class="alert alert-danger">
-                {{ error.messageKey | trans(error.messageData, 'security') }}
+            <div class="row text-center">
+                <div class="col-md-6 align" id="login_form">
+                    <form action="{{ path('login') }}" method="post">
+                        <img class="mb-3" src="{{ asset('images/logo.png') }}" alt="logo" width="164" height="164">
+                        <h3>Connexion</h3>
+                        <div class="form-group mt-4">
+                            <input type="text" class="form-control" placeholder="Your Username *" name="_username" value="{{ last_username }}" />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Your Password *" name="_password" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btnSubmit" value="Login" />
+                        </div>
+                        {#<div class="form-group">
+                            <a href="#" class="ForgetPwd">Forget Password?</a>
+                        </div>#}
+                    </form>
+                </div>
             </div>
-        {% endif %}
-
-        <form action="{{ path('login') }}" method="post">
-            <div class="form-group">
-                <label for="username">Nom d'utilisateur</label>
-                <input type="text" id="username" name="_username" class="form-control" value="{{ last_username }}">
-            </div>
-
-            <div class="form-group">
-                <label for="password">Nom d'utilisateur</label>
-                <input type="password" id="password" name="_password" class="form-control">
-            </div>
-
-            <button type="submit" class="btn btn-primary">Se connecter</button>
-        </form>
-
-    </div>
+        </div>
+    </section>
 {% endblock %}
