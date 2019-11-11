@@ -3,44 +3,72 @@
 {% block title project.title %}
 
 {% block body %}
-    <div class="jumbotron">
-        <div class="container">
+
+    <section>
+        <div class="container mt-2">
+            <h4><a href="{{ path('home') }}"><span>Acidarts </span>
+                <span> > </span><span>Projects</span></a><span> > </span>{{ project.title }}</h4>
+            <h1>{{ project.title }}</h1>
+        </div>
+        <div class="container" id="project_content">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-7 text-center">
                     {% if project.filename and not project.link %}
                         <img src="{{ vich_uploader_asset(project, 'thumbFile') }}" alt="" class="card-img-top" style="width: 100%; height: auto;">
                     {% elseif project.link and project.filename %}
-                        <iframe width="560" height="315" src="{{ project.link|replace({'watch?v=' : "embed/"}) }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="video">
+                            <a href="https://youtube.com/watch?v=G0HOBRQiGfk" data-lity><img src="{{ asset('images/videothumb/index.jpeg') }}" alt=""></a>
+                            <p>Vidéo de présentation de la scène capturée en temps réel.</p>
+                        </div>
                     {% elseif project.link and not project.filename %}
-                        <iframe width="560" height="315" src="{{ project.link|replace({'watch?v=' : "embed/"}) }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="video">
+                            <a href="https://youtube.com/watch?v=G0HOBRQiGfk" data-lity><img src="{{ asset('images/videothumb/index.jpeg') }}" alt=""></a>
+                            <p>Vidéo de présentation de la scène capturée en temps réel.</p>
+                        </div>
                     {% else %}
                         <img src="{{ '../images/empty.jpg' }}" alt="" class="card-img-top" style="width: 100%; height: auto;">
                     {% endif %}
                 </div>
                 <div class="col-md-4">
-                    <h1>{{ project.title }}</h1>
-                    <h4>{{ project.description | raw }}</h4>
-
-                    <a href="#" class="btn btn-primary">Visiter le site web</a>
-                    {% if app.user %}
-                        <a href="{{ path('admin.project.edit', {id: project.id}) }}" class="btn btn-secondary">Editer le projet</a>
-                    {% endif %}
+                    <p class="type-project">{{ project.type }}</p>
+                    <p class="title-project">{{ project.title }}</p>
+                    <p class="description-project"> {{ project.description | raw }}</p>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container">
-        {% for picture in project.pictures %}
-            <div class="mt-4 mb-4">
-                <img src="{{ vich_uploader_asset(picture, 'imageFile') }}" width="250" alt="">
-            </div>
-        {% endfor %}
-    </div>
+    </section>
 
-    <div class="container">
-        {% for video in project.videos %}
-            <iframe width="560" height="315" src="{{ video.videoname|replace({'watch?v=' : "embed/"}) }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        {% endfor %}
-    </div>
+    <section>
+        <div class="container" id="projects_bar">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="links">
+                        <a href="{{ asset('images/videothumb/index.jpeg') }}" title="Real Life INFERNO 05"><img src="{{ asset('images/videothumb/index.jpeg') }}" alt="Real Life INFERNO 05" class="img-project-library"></a>
+                        <a href="{{ asset('images/videothumb/index.jpeg') }}" title="Real Life INFERNO 05"><img src="{{ asset('images/videothumb/index.jpeg') }}" alt="Real Life INFERNO 05" class="img-project-library"></a>
+                        <a href="{{ asset('images/videothumb/index.jpeg') }}" title="Real Life INFERNO 05"><img src="{{ asset('images/videothumb/index.jpeg') }}" alt="Real Life INFERNO 05" class="img-project-library"></a>
+                        <a href="{{ asset('images/videothumb/index.jpeg') }}" title="Real Life INFERNO 05"><img src="{{ asset('images/videothumb/index.jpeg') }}" alt="Real Life INFERNO 05" class="img-project-library"></a>
+                        <a href="{{ asset('images/videothumb/index.jpeg') }}" title="Real Life INFERNO 05"><img src="{{ asset('images/videothumb/index.jpeg') }}" alt="Real Life INFERNO 05" class="img-project-library"></a>
+                    </div>
+
+                    <div id="blueimp-gallery" class="blueimp-gallery">
+                        <div class="slides"></div>
+                        <h3 class="title"></h3>
+                        <a class="prev">‹</a>
+                        <a class="next">›</a>
+                        <a class="close">×</a>
+                        <a class="play-pause"></a>
+                        <ol class="indicator"></ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            {% for video in project.videos %}
+                <iframe width="560" height="315" src="{{ video.videoname|replace({'watch?v=' : "embed/"}) }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            {% endfor %}
+        </div>
+    </section>
 
 {% endblock %}

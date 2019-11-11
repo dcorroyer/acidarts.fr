@@ -140,6 +140,10 @@ section h4, h1, h2, h3 {
     border-radius: 10px;
 }
 
+#project_content {
+    margin-top: 60px;
+}
+
 .project_list_button {
     width: 50px;
     transform: scale(1);
@@ -183,6 +187,28 @@ section h4, h1, h2, h3 {
     font-weight: 600;
     margin-bottom: 20px;
     color: rgba(77, 77, 77, 0.5);
+}
+
+.video img {
+    width: 90%;
+}
+
+.img-project-library {
+    width: 100%;
+}
+
+.type-project {
+    margin: 0 auto;
+    font-size: 0.875em;
+    font-weight: 600;
+    color: rgba(77, 77, 77, 0.5);
+}
+
+.title-project {
+    font-size: 0.875em;
+    font-weight: bold;
+    text-transform: uppercase;
+
 }
 
 /* ANIMATION IMAGE */
@@ -452,4 +478,5 @@ footer p {
     form img {
         margin-top: -20px;
     }
+
 }
