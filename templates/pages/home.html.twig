@@ -2,10 +2,13 @@
 
 {% block body %}
     <section>
+
         <div class="container mt-2">
             <h4><a href="{{ path('home') }}"><span>Acidarts ></span></a> Projects</h4>
             <h1>Projects</h1>
         </div>
+
+        <!-- PROJECTS LIST -->
         <div class="container" id="projects_bar">
             <div class="row">
                 {% for project in projects %}
@@ -15,5 +18,6 @@
                 {% endfor %}
             </div>
         </div>
+
     </section>
 {% endblock %}

@@ -17,13 +17,13 @@
                         <img src="{{ vich_uploader_asset(project, 'thumbFile') }}" alt="" class="card-img-top" style="width: 100%; height: auto;">
                     {% elseif project.link and project.filename %}
                         <div class="video">
-                            <a href="https://youtube.com/watch?v=G0HOBRQiGfk" data-lity><img src="{{ asset('images/videothumb/index.jpeg') }}" alt=""></a>
-                            <p>Vidéo de présentation de la scène capturée en temps réel.</p>
+                            <a href="{{ project.link }}" data-lity><img src="{{ asset('images/videothumb/index.jpeg') }}" alt=""></a>
+                            <p>{{ project.linktitle }}</p>
                         </div>
                     {% elseif project.link and not project.filename %}
                         <div class="video">
-                            <a href="https://youtube.com/watch?v=G0HOBRQiGfk" data-lity><img src="{{ asset('images/videothumb/index.jpeg') }}" alt=""></a>
-                            <p>Vidéo de présentation de la scène capturée en temps réel.</p>
+                            <a href="{{ project.link }}" data-lity><img src="{{ asset('images/videothumb/index.jpeg') }}" alt=""></a>
+                            <p>{{ project.linktitle }}</p>
                         </div>
                     {% else %}
                         <img src="{{ '../images/empty.jpg' }}" alt="" class="card-img-top" style="width: 100%; height: auto;">

@@ -3,23 +3,17 @@
 {% block body %}
 
     <div class="container">
-
         {% for message in app.flashes('success') %}
-
             <div class="alert alert-success">
                 {{ message }}
             </div>
-
         {% endfor %}
 
         {% if not form.vars.valid %}
-
             <div class="alert alert-danger">
                 Erreur, veuillez vérifier les informations entrées dans le formulaire de contact, puis réessayez.
             </div>
-
         {% endif %}
-
     </div>
 
     <section>
@@ -27,6 +21,8 @@
             <h4><a href="{{ path('home') }}"><span>Acidarts ></span></a> Contact</h4>
             <h1>Contact</h1>
         </div>
+
+        <!-- CONTACT FORM -->
 
     {#<div class="container mt-4">
         <h2>Contact</h2>

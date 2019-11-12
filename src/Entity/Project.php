@@ -71,6 +71,11 @@ class Project
     private $link;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $linktitle;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $created_at;
@@ -229,6 +234,25 @@ class Project
     public function setLink($link): self
     {
         $this->link = $link;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLinktitle()
+    {
+        return $this->linktitle;
+    }
+
+    /**
+     * @param mixed $linktitle
+     * @return Project
+     */
+    public function setLinktitle($linktitle): self
+    {
+        $this->linktitle = $linktitle;
+
         return $this;
     }
 

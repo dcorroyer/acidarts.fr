@@ -21,6 +21,7 @@ class ProjectType extends AbstractType
                 'required' => false
             ])
             ->add('link')
+            ->add('linktitle')
             ->add('imageFiles', FileType::class, [
                 'required' => false,
                 'multiple' => true
@@ -32,7 +33,6 @@ class ProjectType extends AbstractType
                 'allow_delete' => true,
                 'by_reference' => false
             ])
-
         ;
     }
 
