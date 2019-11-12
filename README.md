@@ -12,6 +12,9 @@ Composed of:
 BACK TODO:
 
     Make description page to be manageable
+    Refactor login to be able to recover account
+    Make the user to be able to change his password
+    Add videotitle
 
 FRONT TODO/DONE:
 
