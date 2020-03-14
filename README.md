@@ -1,14 +1,26 @@
 ### Project acidarts.fr
 
-FRONT TODO:
+Custom portfolio for my client.  
+My client wanted to be able to create his projects himself.
 
-    new/edit form
-    responsive
+##### Back-end:
+
+    Symfony 4.4  
+    PHP 7.2
+    MySQL
     
-BACK TODO:
+##### Front-end:
 
-    Upload miniature videos (video miniature et video projet)
+    Bootstrap 4
+    Twig
+    
+#### Structure of the application:
 
-IF FINISHED:
-
-    Description page manageable
+- Projects(home)
+- Description(CV)
+- Contact(mail)  
+- Administration(hidden):
+    - Login(security)
+    - Project list
+    - Project creation
+    - Project modification
