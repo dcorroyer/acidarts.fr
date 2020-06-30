@@ -4,24 +4,23 @@ namespace App\Controller;
 
 use App\Entity\Project;
 use App\Repository\ProjectRepository;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ProjectController extends AbstractController
 {
-
     /**
      * @var ProjectRepository
      */
     private $repository;
     /**
-     * @var ObjectManager
+     * @var EntityManagerInterface
      */
     private $em;
 
-    public function __construct(ProjectRepository $repository, ObjectManager $em)
+    public function __construct(ProjectRepository $repository, EntityManagerInterface $em)
     {
         $this->repository = $repository;
         $this->em = $em;
@@ -36,13 +35,13 @@ class ProjectController extends AbstractController
     {
         if($project->getSlug() !== $slug) {
             return $this->redirectToRoute('project.show', [
-               'id' => $project->getId(),
-               'slug' => $project->getSlug()
+                'id' => $project->getId(),
+                'slug' => $project->getSlug()
             ], 301);
         }
         return $this->render('project/show.html.twig', [
             'project' => $project,
-           'curren_menu' => 'projects'
+            'curren_menu' => 'projects'
         ]);
     }
 }

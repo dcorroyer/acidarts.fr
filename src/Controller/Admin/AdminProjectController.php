@@ -4,8 +4,7 @@ namespace App\Controller\Admin;
 use App\Entity\Project;
 use App\Form\ProjectType;
 use App\Repository\ProjectRepository;
-use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,11 +19,11 @@ class AdminProjectController extends AbstractController
      */
     private $repository;
     /**
-     * @var ObjectManager
+     * @var EntityManagerInterface
      */
     private $em;
 
-    public function __construct(ProjectRepository $repository, ObjectManager $em)
+    public function __construct(ProjectRepository $repository, EntityManagerInterface $em)
     {
         $this->repository = $repository;
         $this->em = $em;
@@ -46,7 +45,6 @@ class AdminProjectController extends AbstractController
      * @Route("/admin/project/create", name="admin.project.new")
      * @param Request $request
      * @return Response
-     * @throws NonUniqueResultException
      */
     public function new(Request $request)
     {
@@ -116,11 +114,11 @@ class AdminProjectController extends AbstractController
 
     /**
      * @Route("/admin/move/position", name="admin_move_position", methods={"POST"})
-     * @param ObjectManager $manager
+     * @param EntityManagerInterface $manager
      * @param Request $request
      * @return Response
      */
-    public function movePosition(ObjectManager $manager, Request $request)
+    public function movePosition(EntityManagerInterface $manager, Request $request)
     {
         $direction = $request->request->get('direction');
         $id = $request->request->get('id');

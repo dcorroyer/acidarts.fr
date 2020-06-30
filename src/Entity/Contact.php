@@ -2,10 +2,21 @@
 
 namespace App\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * @ORM\Entity()
+ */
 class Contact
 {
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
     /**
      * @var string|null
      * @Assert\NotBlank()
@@ -40,6 +51,11 @@ class Contact
      * @Assert\Length(min="10")
      */
     private $message;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
     /**
      * @return null|string

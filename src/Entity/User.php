@@ -7,7 +7,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\Entity()
  */
 class User implements UserInterface,\Serializable
 {
@@ -21,13 +21,13 @@ class User implements UserInterface,\Serializable
     /**
      * @Assert\NotNull()
      * @Assert\Type("string")
-     * @Assert\Length(max=191)
-     * @ORM\Column(type="string", length=191)
+     * @Assert\Length(max=255)
+     * @ORM\Column(type="string", length=255)
      */
     private $username;
 
     /**
-     * @ORM\Column(type="string", length=191)
+     * @ORM\Column(type="string", length=255)
      */
     private $password;
 

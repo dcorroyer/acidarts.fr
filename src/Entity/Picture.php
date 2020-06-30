@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\PictureRepository")
+ * @ORM\Entity()
  * @Vich\Uploadable()
  */
 class Picture
@@ -21,7 +21,7 @@ class Picture
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=191)
+     * @ORM\Column(type="string", length=255)
      */
     private $filename;
 
