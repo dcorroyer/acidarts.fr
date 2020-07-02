@@ -28,11 +28,6 @@
                 <div class="col-md-7">
                     {{ form_start(form) }}
                     {{ form_widget(form) }}
-                    {{ form_row(form.name) }}
-                    {{ form_row(form.lastname) }}
-                    {{ form_row(form.email) }}
-                    {{ form_row(form.subject) }}
-                    {{ form_row(form.message) }}
                     <button id="button">{{ button|default('Envoyer') }}</button>
                     {{ form_end(form) }}
                 </div>

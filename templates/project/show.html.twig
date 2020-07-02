@@ -16,12 +16,12 @@
                         <img src="{{ vich_uploader_asset(project, 'thumbFile') }}" alt="" class="card-img-top" style="width: 100%; height: auto;">
                     {% elseif project.link and project.filename %}
                         <div class="project-video">
-                            <a href="{{ project.link }}" data-lity><img src="{{ asset('images/inferno.jpg') }}" alt=""></a>
+                            <iframe width="560" height="315" src="{{ project.link|replace({'watch?v=' : "embed/"}) }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             <p>{{ project.linktitle }}</p>
                         </div>
                     {% elseif project.link and not project.filename %}
                         <div class="project-video">
-                            <a href="{{ project.link }}" data-lity><img src="{{ asset('images/inferno.jpg') }}" alt=""></a>
+                            <iframe width="560" height="315" src="{{ project.link|replace({'watch?v=' : "embed/"}) }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             <p>{{ project.linktitle }}</p>
                         </div>
                     {% else %}
@@ -77,7 +77,7 @@
         <div class="container">
             {% for video in project.videos %}
                 <div class="project-video text-center" id="projects_videos">
-                    <a href="{{ video.videoname }}" data-lity><img src="{{ asset('images/inferno-preview.jpg') }}" alt=""></a>
+                    <iframe width="560" height="315" src="{{ video.videoname|replace({'watch?v=' : "embed/"}) }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             {% endfor %}
         </div>
