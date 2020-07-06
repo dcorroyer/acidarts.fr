@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section>
+        <div class="container mt-2">
+            <h4><a href="{{ path('home') }}"><span>Acidarts ></span></a> <a href="{{ path('admin.project.index') }}">Administration</a></h4>
+            <button class="btn btn-outline-secondary" id="first_button"><a href="{{ path('admin.project.index') }}">Back</a></button>
+            <button class="btn btn-outline-secondary"><a href="{{ path('logout') }}">Disconnect</a></button>
+            <h1>My account</h1>
+        </div>
+
+        <div class="container mt-4">
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+        </div>
+
+        <div class="container mt-4">
+            <div class="row" id="contact_content">
+                <div class="col-md-7">
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <button id="button">{{ button|default('Envoyer') }}</button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
