@@ -39,11 +39,6 @@ class User implements UserInterface,\Serializable
      */
     private $password;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $plainPassword;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -156,17 +151,5 @@ class User implements UserInterface,\Serializable
             $this->username,
             $this->password
             ) = unserialize($serialized, ['allowed_classes' => false]);
-    }
-
-    public function getPlainPassword(): ?string
-    {
-        return $this->plainPassword;
-    }
-
-    public function setPlainPassword(?string $plainPassword): self
-    {
-        $this->plainPassword = $plainPassword;
-
-        return $this;
     }
 }
