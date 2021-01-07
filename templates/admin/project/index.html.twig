@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
     <section>
         <div class="container mt-2">
             <h4><a href="{{ path('home') }}"><span>Acidarts ></span></a> <a href="{{ path('admin.project.index') }}">Administration</a></h4>
@@ -9,11 +10,13 @@
         </div>
 
         <div class="container mt-4">
+
             {% for message in app.flashes('success') %}
                 <div class="alert alert-success">
                     {{ message }}
                 </div>
             {% endfor %}
+
             <div class="col-md-8" id="projects_list">
                 <div class="panel-heading mb-2">
                     <div class="row">
@@ -32,6 +35,7 @@
                         </tr>
                         </thead>
                         <tbody>
+
                         {% for project in projects %}
                             <tr class="text-center">
                                 <td class="col-xs-8 text-left align-middle">{{ project.title }}</td>
@@ -54,19 +58,21 @@
                                             </form>
                                         </div>
                                     </div>
-
                                 </td>
                             </tr>
                         {% endfor %}
+
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </section>
-{% endblock %}
+
+{% endblock body %}
 
 {% block javascripts %}
+
     <script>
         $('#mytable a.move').click(function() {
             let row = $(this).closest('tr');
@@ -75,9 +81,11 @@
             else
                 row.next().after(row);
         });
+
         function up(element){
             postAjax(element,"UP");
         }
+
         function down(element){
             postAjax(element,"DOWN");
         }
@@ -97,4 +105,5 @@
             }
         }
     </script>
-{% endblock %}
+
+{% endblock javascripts %}

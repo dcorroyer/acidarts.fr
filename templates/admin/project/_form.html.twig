@@ -20,7 +20,7 @@
                 addTagForm($collectionHolder, $newLinkLi);
             });
             $collectionHolder.find('li fieldset fieldset').each(function() {
-                    addTagFormDeleteLink($(this));
+                addTagFormDeleteLink($(this));
             });
         });
 
@@ -69,38 +69,46 @@
                 'autolink',
                 'tinymcespellchecker',
                 'anchor',
+                'lineheight'
             ],
             toolbar: [
                 'undo redo | bold italic underline | fontselect fontsizeselect',
-                'forecolor backcolor | anchor link'
+                'forecolor backcolor | anchor link | lineheightselect'
             ],
+            forced_root_block: 'p',
+            lineheight_formats: "8pt 9pt 10pt 11pt 12pt 14pt 16pt 18pt 20pt 22pt 24pt 26pt 36pt",
         });
     </script>
+
     <style type="text/css">
         .tox-notifications-container{
             display: none;
         }
-
     </style>
 
-{% endblock %}
+{% endblock javascripts %}
 
-<div class="container mb-4" id="vid">
+<div class="container mt-4">
 
     {% form_theme form _self %}
     {{ form_start(form) }}
 
     {{ form_row(form.title) }}
+    {{ form_row(form.type) }}
     {{ form_row(form.description) }}
     {{ form_row(form.thumbFile) }}
     {{ form_row(form.link) }}
+    {{ form_row(form.linktitle) }}
     {{ form_row(form.imageFiles) }}
+    {{ form_label(form.videos) }}
 
     <ul class="videos" data-prototype="{{ form_widget(form.videos.vars.prototype)|e('html_attr') }}">
         {% for video in project.videos %}
             <li>{{ form_row(form.videos) }}</li>
         {% endfor %}
     </ul>
+
+    {% do form.videos.setRendered() %}
 
     <button class="btn btn-primary">{{ button|default('Enregistrer') }}</button>
     <a href="{{ path('admin.project.index') }}" class="btn btn-warning">Annuler</a>
@@ -110,17 +118,14 @@
 </div>
 
 {% if project.filename %}
-
     <h3>La miniature du bien</h3>
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-4 mb-4">
-                    <img src="{{ vich_uploader_asset(project, 'thumbFile') }}" alt="" class="card-img-top" style="width: 100%; height: auto;">
-
+                <img src="{{ vich_uploader_asset(project, 'thumbFile') }}" alt="" class="card-img-top" style="width: 100%; height: auto;">
             </div>
         </div>
     </div>
-
 {% endif %}
 
 {% for picture in project.pictures %}
