@@ -43,21 +43,11 @@
         <div class="container" id="projects_bar">
             <div class="row">
                 <div id="links">
-                    <a href="{{ asset('images/inferno.jpg') }}" title="Real Life INFERNO 05">
-                        <img src="{{ asset('images/inferno-preview.jpg') }}" alt="Real Life INFERNO 05" class="project-img-library">
-                    </a>
-                    <a href="{{ asset('images/inferno.jpg') }}" title="Real Life INFERNO 05">
-                        <img src="{{ asset('images/inferno-preview.jpg') }}" alt="Real Life INFERNO 05" class="project-img-library">
-                    </a>
-                    <a href="{{ asset('images/inferno.jpg') }}" title="Real Life INFERNO 05">
-                        <img src="{{ asset('images/inferno-preview.jpg') }}" alt="Real Life INFERNO 05" class="project-img-library">
-                    </a>
-                    <a href="{{ asset('images/inferno.jpg') }}" title="Real Life INFERNO 05">
-                        <img src="{{ asset('images/inferno-preview.jpg') }}" alt="Real Life INFERNO 05" class="project-img-library">
-                    </a>
-                    <a href="{{ asset('images/inferno.jpg') }}" title="Real Life INFERNO 05">
-                        <img src="{{ asset('images/inferno-preview.jpg') }}" alt="Real Life INFERNO 05" class="project-img-library">
-                    </a>
+                    {% for picture in project.pictures %}
+                        <a href="{{ vich_uploader_asset(picture, 'imageFile') }}">
+                            <img src="{{ vich_uploader_asset(picture, 'imageFile') }}" width="250" alt="" class="project-img-library">
+                        </a>
+                    {% endfor %}
                 </div>
 
                 <div id="blueimp-gallery" class="blueimp-gallery">

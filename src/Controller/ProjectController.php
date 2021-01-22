@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Project;
 use App\Repository\ProjectRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,23 +26,18 @@ class ProjectController extends AbstractController
         $this->repository = $repository;
         $this->em = $em;
     }
+
     /**
      * @Route("/projects/{slug}-{id}", name="project.show", requirements={"slug": "[a-z0-9\-]*"})
+     * @Security("project.getSlug() == slug")
      * @param Project $project
-     * @param string $slug
      * @return Response
      */
-    public function show(Project $project, string $slug): Response
+    public function show(Project $project): Response
     {
-        if($project->getSlug() !== $slug) {
-            return $this->redirectToRoute('project.show', [
-                'id' => $project->getId(),
-                'slug' => $project->getSlug()
-            ], 301);
-        }
         return $this->render('project/show.html.twig', [
             'project' => $project,
-            'curren_menu' => 'projects'
+            'current_menu' => 'projects'
         ]);
     }
 }
