@@ -16,6 +16,7 @@ class ProjectController extends AbstractController
      * @var ProjectRepository
      */
     private $repository;
+    
     /**
      * @var EntityManagerInterface
      */
@@ -24,7 +25,7 @@ class ProjectController extends AbstractController
     public function __construct(ProjectRepository $repository, EntityManagerInterface $em)
     {
         $this->repository = $repository;
-        $this->em = $em;
+        $this->em         = $em;
     }
 
     /**
@@ -36,7 +37,7 @@ class ProjectController extends AbstractController
     public function show(Project $project): Response
     {
         return $this->render('project/show.html.twig', [
-            'project' => $project,
+            'project'      => $project,
             'current_menu' => 'projects'
         ]);
     }

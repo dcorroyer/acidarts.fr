@@ -3,23 +3,18 @@
 {% block body %}
 
     <section>
-
-        <div class="container mt-2">
+        <div class="wrapper">
             <h4><a href="{{ path('home') }}"><span>Acidarts ></span></a> Projects</h4>
             <h1>Projects</h1>
-        </div>
 
-        <!-- PROJECTS LIST -->
-        <div class="container" id="projects_block">
-            <div class="row">
+            <!-- BLOCK PROJECTS -->
+            <div class="flex-container">
                 {% for project in projects %}
-                    <div class="col-md-4">
-                        {% include 'project/_project.html.twig' %}
-                    </div>
+                    {% include 'project/_project.html.twig' %}
                 {% endfor %}
             </div>
+            <!-- ENDBLOCK PROJECTS -->
         </div>
-
     </section>
 
 {% endblock body %}

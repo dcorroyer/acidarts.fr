@@ -12,7 +12,7 @@ class DescriptionController extends AbstractController
      * @Route("/description", name="description.index")
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         return $this->render('pages/description.html.twig', [
             'current_menu' => 'description'

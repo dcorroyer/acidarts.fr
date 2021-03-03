@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Listener;
 
 use App\Entity\Picture;
@@ -9,8 +8,8 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 
-class ImageCacheSubscriber implements EventSubscriber {
-
+class ImageCacheSubscriber implements EventSubscriber
+{
     /**
      * @var UploaderHelper
      */
@@ -21,7 +20,7 @@ class ImageCacheSubscriber implements EventSubscriber {
         $this->helper = $helper;
     }
 
-    public function getSubscribedEvents()
+    public function getSubscribedEvents(): array
     {
         return [
             'preRemove',
@@ -36,7 +35,8 @@ class ImageCacheSubscriber implements EventSubscriber {
         $this->uploadFile($entity);
     }
 
-    public function preRemove(LifecycleEventArgs $args) {
+    public function preRemove(LifecycleEventArgs $args)
+    {
         $entity = $args->getEntity();
 
         $this->uploadFile($entity);
@@ -51,6 +51,5 @@ class ImageCacheSubscriber implements EventSubscriber {
         if (!$entity instanceof Picture) {
             return;
         }
-
     }
 }

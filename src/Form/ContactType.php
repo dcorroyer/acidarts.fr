@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Form;
 
 use App\Entity\Contact;
@@ -17,48 +16,46 @@ class ContactType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'label' => false,
-                'attr' => [
-                    'class' => 'surname',
+                'attr'  => [
+                    'class'       => 'surname',
                     'placeholder' => 'SURNAME / NOM *'
                 ]
             ])
             ->add('lastname', TextType::class, [
                 'label' => false,
-                'attr' => [
-                    'class' => 'name',
+                'attr'  => [
+                    'class'       => 'name',
                     'placeholder' => 'NAME / PRENOM *'
                 ]
             ])
             ->add('email', EmailType::class, [
                 'label' => false,
-                'attr' => [
-                    'class' => 'email',
+                'attr'  => [
+                    'class'       => 'email',
                     'placeholder' => 'EMAIL *'
                 ]
             ])
             ->add('subject', TextType::class, [
                 'label' => false,
-                'attr' => [
-                    'class' => 'subject',
+                'attr'  => [
+                    'class'       => 'subject',
                     'placeholder' => 'SUBJECT / SUJET *'
                 ]
             ])
             ->add('message', TextareaType::class, [
                 'label' => false,
-                'attr' => [
-                    'class' => 'message',
+                'attr'  => [
+                    'class'       => 'message',
                     'placeholder' => 'YOUR MESSAGE / VOTRE MESSAGE *'
                 ]
             ])
         ;
     }
 
-
-
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Contact::class,
+            'data_class'         => Contact::class,
             'translation_domain' => 'forms'
         ]);
     }

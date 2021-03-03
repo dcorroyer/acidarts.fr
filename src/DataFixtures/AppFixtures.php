@@ -23,8 +23,8 @@ class AppFixtures extends Fixture
     {
         for ($u = 0; $u < 1; $u++) {
             $user = new User();
-
             $hash = $this->encoder->encodePassword($user, 'password');
+
             $user->setUsername('admin')
                 ->setEmail('dylan.corroyer@wanadoo.fr')
                 ->setPassword($hash);

@@ -13,7 +13,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ContactController extends AbstractController
 {
-
     /**
      * @Route("/contact", name="contact.index")
      * @param Request $request
@@ -23,10 +22,11 @@ class ContactController extends AbstractController
     public function index(Request $request, Swift_Mailer $mailer): Response
     {
         $contact = new Contact();
-        $form = $this->createForm(ContactType::class, $contact);
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {
+        $form    = $this->createForm(ContactType::class, $contact);
 
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
             $message = new Swift_Message();
             $message
                 ->setTo('dylan.corroyer@wanadoo.fr')
@@ -38,8 +38,8 @@ class ContactController extends AbstractController
 
             $mailer->send($message);
             $this->addFlash('success', 'Votre Email a bien été envoyé !');
-            return $this->redirectToRoute('contact.index');
 
+            return $this->redirectToRoute('contact.index');
         }
 
         return $this->render('pages/contact.html.twig', [

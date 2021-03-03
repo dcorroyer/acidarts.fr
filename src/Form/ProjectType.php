@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Form;
 
 use App\Entity\Project;
@@ -27,11 +26,11 @@ class ProjectType extends AbstractType
                 'multiple' => true
             ])
             ->add('videos', CollectionType::class, [
-                'entry_type' => VideoType::class,
+                'entry_type'    => VideoType::class,
                 'entry_options' => ['label' => false],
-                'allow_add' => true,
-                'allow_delete' => true,
-                'by_reference' => false
+                'allow_add'     => true,
+                'allow_delete'  => true,
+                'by_reference'  => false
             ])
         ;
     }
@@ -39,7 +38,7 @@ class ProjectType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Project::class,
+            'data_class'         => Project::class,
             'translation_domain' => 'forms'
         ]);
     }

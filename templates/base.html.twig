@@ -10,17 +10,10 @@
     <link rel="icon" type="image/png" href="{{ asset('images/logos/favicon.png') }}" />
 
     <!-- CSS/JS -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrapp.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/lity.css') }}" rel="stylesheet">
     <link href="{{ asset('css/blueimp-gallery.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/description.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/contact.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/projects.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
     <script src="{{ asset('js/jquery.js') }}"></script>
     {% block stylesheets %}{% endblock %}
 
@@ -31,39 +24,38 @@
 <img src="{{ asset('images/logos/background.svg') }}" alt="background" class="background">
 
 <div class="main">
+    <!-- BLOCK HEADER -->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container">
+        <div class="wrapper">
+            <nav>
                 <a href="{{ path('home') }}"><img src="{{ asset('images/logos/logo.svg') }}" alt="logo" class="logo"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <li><a href="{{ path('home') }}">Projects</a></li>
-                        <li><a href="{{ path('description.index') }}">About</a></li>
-                        <li><a href="{{ path('contact.index') }}">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+                <label for="menu-mobile" class="menu-mobile">Afficher le menu</label>
+                <input type="checkbox" id="menu-mobile" role="button">
+                <ul>
+                    <li><a href="{{ path('home') }}">Projects</a></li>
+                    <li><a href="{{ path('description.index') }}">About</a></li>
+                    <li><a href="{{ path('contact.index') }}">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
+    <!-- ENDBLOCK HEADER -->
 
+    <!-- BLOCK CONTENT -->
     <div class="content">
-
         {% block body %}{% endblock %}
-
     </div>
+    <!-- ENDBLOCK CONTENT -->
 
-    <!-- FOOTER -->
+    <!-- BLOCK FOOTER -->
     <footer>
-        <div class="container">
+        <div class="wrapper">
             <div class="copyright">
                 <p>Copyright © {{ "now"|date("Y")}} Jean-Baptiste Sottile | Conçu par <a href="https://www.dcorroyer.fr/" target="_blank">Dylan Corroyer</a></p>
             </div>
         </div>
     </footer>
-
+    <!-- ENDBLOCK FOOTER -->
 </div>
 
 {% block javascripts %}{% endblock %}

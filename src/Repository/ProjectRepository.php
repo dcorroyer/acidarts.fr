@@ -24,16 +24,14 @@ class ProjectRepository extends ServiceEntityRepository
     /**
      * @return int
      */
-    public function projectCount()
+    public function projectCount(): int
     {
         try {
             return $this->createQueryBuilder('p')
                 ->select('COUNT(p)')
                 ->getQuery()
                 ->getSingleScalarResult();
-        } catch (NoResultException $e) {
-            return 1;
-        } catch (NonUniqueResultException $e) {
+        } catch (NoResultException | NonUniqueResultException $e) {
             return 1;
         }
     }
@@ -52,33 +50,4 @@ class ProjectRepository extends ServiceEntityRepository
 
         return $qb->execute();
     }
-
-    // /**
-    //  * @return Project[] Returns an array of Project objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Project
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

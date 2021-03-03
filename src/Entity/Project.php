@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Entity;
 
 use DateTime;
@@ -119,7 +118,7 @@ class Project
         return $this->position;
     }
 
-    public function setPosition($position)
+    public function setPosition($position): Project
     {
         $this->position = $position;
         return $this;

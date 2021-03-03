@@ -13,7 +13,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AdminProjectController extends AbstractController
 {
-
     /**
      * @var ProjectRepository
      */
@@ -26,7 +25,7 @@ class AdminProjectController extends AbstractController
     public function __construct(ProjectRepository $repository, EntityManagerInterface $em)
     {
         $this->repository = $repository;
-        $this->em = $em;
+        $this->em         = $em;
     }
 
     /**
@@ -46,26 +45,28 @@ class AdminProjectController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function new(Request $request)
+    public function new(Request $request): Response
     {
         $project = new Project();
-        $form = $this->createForm(ProjectType::class, $project);
+        $form    = $this->createForm(ProjectType::class, $project);
+
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
             $position = $this->repository->projectCount();
+
             $project->setPosition(intval($position) + 1);
             $this->em->persist($project);
             $this->em->flush();
             $this->addFlash('success', 'Le projet a été créé avec succès');
+
             return $this->redirectToRoute('admin.project.index');
         }
 
         return $this->render('admin/project/new.html.twig', [
             'project' => $project,
-            'form' => $form->createView()
+            'form'    => $form->createView()
         ]);
-
     }
 
     /**
@@ -74,20 +75,22 @@ class AdminProjectController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function edit(Project $project, Request $request)
+    public function edit(Project $project, Request $request): Response
     {
         $form = $this->createForm(ProjectType::class, $project);
+
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
             $this->em->flush();
             $this->addFlash('success', 'Le projet a été modifié avec succès');
+
             return $this->redirectToRoute('admin.project.index');
         }
 
         return $this->render('admin/project/edit.html.twig', [
             'project' => $project,
-            'form' => $form->createView()
+            'form'    => $form->createView()
         ]);
     }
 
@@ -97,18 +100,20 @@ class AdminProjectController extends AbstractController
      * @param Request $request
      * @return RedirectResponse
      */
-    public function delete(Project $project, Request $request)
+    public function delete(Project $project, Request $request): RedirectResponse
     {
         if($this->isCsrfTokenValid('delete' . $project->getId(), $request->get('_token'))) {
             $this->em->remove($project);
             $projects = $this->repository->projectsHigherPosition($project->getPosition());
-            foreach ($projects as $project)
-            {
+
+            foreach ($projects as $project) {
                 $project->setPosition($project->getPosition() - 1);
             }
+
             $this->em->flush();
             $this->addFlash('success', 'Le projet a été supprimé avec succès');
         }
+
         return $this->redirectToRoute('admin.project.index');
     }
 
@@ -118,30 +123,39 @@ class AdminProjectController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function movePosition(EntityManagerInterface $manager, Request $request)
+    public function movePosition(EntityManagerInterface $manager, Request $request): Response
     {
         $direction = $request->request->get('direction');
-        $id = $request->request->get('id');
-        $project = $manager->getRepository(Project::class)->findOneBy(['id'=>$id]);
-        if($project && ($direction == "UP" || $direction =="DOWN")){
-            if($direction == "UP"){
-                $newProject = $project->getPosition()-1;
+        $id        = $request->request->get('id');
+        $project   = $manager
+            ->getRepository(Project::class)
+            ->findOneBy(['id'=>$id]);
+
+        if ($project && ($direction == "UP" || $direction =="DOWN")) {
+            if ($direction == "UP") {
+                $newProject  = $project->getPosition()-1;
                 $nextProject = $manager->getRepository(Project::class)->findOneBy(['position'=>$newProject]);
+
                 $nextProject->setPosition($nextProject->getPosition()+1);
                 $project->setPosition($newProject);
                 $manager->persist($nextProject);
 
-            }elseif($direction == "DOWN"){
-                $newProject = $project->getPosition()+1;
-                $previousProject = $manager->getRepository(Project::class)->findOneBy(['position'=>$newProject]);
+            } elseif ($direction == "DOWN") {
+                $newProject      = $project->getPosition()+1;
+                $previousProject = $manager
+                    ->getRepository(Project::class)
+                    ->findOneBy(['position'=>$newProject]);
+
                 $previousProject->setPosition($previousProject->getPosition()-1);
                 $project->setPosition($newProject);
                 $manager->persist($previousProject);
+
             }
+
             $manager->persist($project);
             $manager->flush();
-            $response = "Le projet est la place ".$project->getPosition();
-        }else{
+            $response = "Le projet est à la place ".$project->getPosition();
+        } else {
             $response = false;
         }
 
