@@ -17,16 +17,54 @@
   <script src="{{ asset('js/jquery.js') }}"></script>
   {% block stylesheets %}
     {{ encore_entry_link_tags('app') }}
-  {% endblock %}
+  {% endblock stylesheets %}
 
 </head>
 <body>
 
-{% block body %}{% endblock %}
+<!-- BACKGROUND TOP LEFT -->
+<img src="{{ asset('images/logos/background.svg') }}" alt="background" class="background">
+
+<div class="main">
+  <!-- BLOCK HEADER -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="{{ path('index') }}"><img src="{{ asset('images/logos/logo.svg') }}" alt="logo" class="logo"></a>
+        <label for="menu-mobile" class="menu-mobile">Afficher le menu</label>
+        <input type="checkbox" id="menu-mobile" role="button">
+        <ul>
+          <li><a href="{{ path('index') }}">Projects</a></li>
+{#          <li><a href="{{ path('description.index') }}">About</a></li>#}
+{#          <li><a href="{{ path('contact.index') }}">Contact</a></li>#}
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- ENDBLOCK HEADER -->
+
+  <!-- BLOCK CONTENT -->
+  <div class="content">
+    {% block body %}{% endblock body %}
+  </div>
+  <!-- ENDBLOCK CONTENT -->
+
+  <!-- BLOCK FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="copyright">
+        <p>Copyright © {{ "now"|date("Y")}} Jean-Baptiste Sottile | Conçu par <a href="https://www.dcorroyer.fr/" target="_blank">Dylan Corroyer</a></p>
+      </div>
+    </div>
+  </footer>
+  <!-- ENDBLOCK FOOTER -->
+</div>
 
 {% block javascripts %}
   {{ encore_entry_script_tags('app') }}
-{% endblock %}
+{% endblock javascripts %}
 
 <!-- JS/JQUERY -->
 <script src="{{ asset('js/lity.js') }}"></script>

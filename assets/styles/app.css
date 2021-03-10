@@ -35,14 +35,7 @@ a {
     color: black;
 }
 
-.wrapper {
-    max-width: 1280px;
-    width: 90%;
-    margin: 0 auto;
-    padding: auto 10px;
-}
-
-.wrapper2 {
+.container {
     max-width: 1280px;
     width: 90%;
     margin: 0 auto;
@@ -542,19 +535,6 @@ iframe {
 }
 
 
-
-
-
-
-/* SMARTPHONES */
-
-.smartphone {
-    text-align: center;
-}
-
-.img-smartphone {
-    width: 33%;
-}
 
 
 
