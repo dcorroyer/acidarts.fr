@@ -1,19 +1,39 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+<html lang="fr">
+<head>
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Acidarts - 3D Artist{% endblock %}</title>
+
+  <!-- FAVICON -->
+  <link rel="shortcut icon" type="image/png" href="{{ asset('images/logos/favicon.png') }}" />
+  <link rel="icon" type="image/png" href="{{ asset('images/logos/favicon.png') }}" />
+
+  <!-- CSS/JS -->
+  <link href="{{ asset('css/bootstrapp.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/lity.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/blueimp-gallery.min.css') }}" rel="stylesheet">
+  <script src="{{ asset('js/jquery.js') }}"></script>
+  {% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+  {% endblock %}
+
+</head>
+<body>
+
+{% block body %}{% endblock %}
+
+{% block javascripts %}
+  {{ encore_entry_script_tags('app') }}
+{% endblock %}
+
+<!-- JS/JQUERY -->
+<script src="{{ asset('js/lity.js') }}"></script>
+<script src="{{ asset('js/blueimp-gallery.min.js') }}"></script>
+<script src="{{ asset('js/popper.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/font-awesome.min.js') }}"></script>
+
+</body>
 </html>
