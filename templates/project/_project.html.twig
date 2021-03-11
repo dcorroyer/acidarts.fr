@@ -1,0 +1,19 @@
+<div class="flex-item" style="border: 1px solid black">
+  <div class="identification">
+    <p class="title"><a href="{{ path('project_show', {slug: project.slug, id: project.id}) }}">{{ project.title }}</a></p>
+{#    <p class="description">{{ project.type }}</p>#}
+  </div>
+  <div class="img">
+    <figure class="snip1573">
+{#      {% if project.filename %}#}
+{#        <img src="{{ vich_uploader_asset(project, 'thumbFile') }}" alt="imgprvw">#}
+{#      {% else %}#}
+{#        <img src="{{ 'images/empty.jpg' }}" alt="imgprvw">#}
+{#      {% endif %}#}
+      <figcaption>
+        <h3>+</h3>
+      </figcaption>
+{#      <a href="{{ path('project.show', {slug: project.slug, id: project.id}) }}"></a>#}
+    </figure>
+  </div>
+</div>
