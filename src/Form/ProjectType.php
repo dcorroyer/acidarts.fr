@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Project;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,6 +15,13 @@ class ProjectType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
+            ->add('thumbFile', FileType::class, [
+                'required' => false
+            ])
+            ->add('imageFiles', FileType::class, [
+                'required' => false,
+                'multiple' => true
+            ])
         ;
     }
 

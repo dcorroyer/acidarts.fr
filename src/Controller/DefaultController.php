@@ -11,7 +11,7 @@ class DefaultController extends AbstractController
 {
     /**
      * @Route("/", name="project_index", methods={"GET"})
-     * @param ProjectRepository $projectRepository
+     * @param  ProjectRepository $projectRepository
      * @return Response
      */
     public function indexAction(ProjectRepository $projectRepository): Response
