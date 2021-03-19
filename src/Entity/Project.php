@@ -65,6 +65,13 @@ class Project
     private $thumbFile;
 
     /**
+     * @Assert\All({
+     *     @Assert\Image(mimeTypes="image/jpeg")
+     *     })
+     */
+    private $imageFiles;
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="project", orphanRemoval=true, cascade={"persist"})
      */
     private $pictures;
@@ -168,6 +175,29 @@ class Project
             $this->updatedAt = new DateTime('now');
         }
 
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImageFiles()
+    {
+        return $this->imageFiles;
+    }
+
+    /**
+     * @param mixed $imageFiles
+     * @return Project
+     */
+    public function setImageFiles($imageFiles): self
+    {
+        foreach ($imageFiles as $imageFile) {
+            $picture = new Picture();
+            $picture->setImageFile($imageFile);
+            $this->addPicture($picture);
+        }
+        $this->imageFiles = $imageFiles;
         return $this;
     }
 
