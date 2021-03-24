@@ -16,6 +16,7 @@ migrations/
 ###< symfony/phpunit-bridge ###
 
 ###> others ###
+.env
 .idea/
 /public/uploads/
 ###< others ###
