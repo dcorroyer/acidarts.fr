@@ -1,24 +1,66 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Project{% endblock %}
+{% block title %}{{ project.title }}{% endblock %}
 
 {% block body %}
 
-    <h1>Project</h1>
+  <section>
+    <div class="container">
+      <h4><a href="{{ path('project_index') }}"><span>Projects > </span></a>{{ project.title }}</h4>
+      <h1>{{ project.title }}</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Title</th>
-                <td>{{ project.title }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ project.description }}</td>
-            </tr>
-        </tbody>
-    </table>
+      <div class="flex-container-project">
+        <div class="flex-item-project-img">
+          <div class="img-project">
+            {% if project.filename %}
+              <img src="{{ vich_uploader_asset(project, 'thumbFile') }}" alt="{{ project.title }}" class="img-project-library">
+            {% else %}
+              <img src="{{ '../images/empty.jpg' }}" alt="{{ project.title }}" class="img-project-library">
+            {% endif %}
+          </div>
+        </div>
 
-    <a href="{{ path('project_index') }}">back to list</a>
+        <div class="flex-item-project-desc">
+          <div class="identification">
+            {# <p class="type-project">{{ project.type }}</p> #}
+            <p class="type-project">3d realtime rendering</p>
+            <p class="title-project">{{ project.title }}</p>
+
+            <p class="description-project2"><i>EN</i> - <b>Schooldesk Photography Reproduction</b> is a still image made in <b>Unreal Engine 4</b>.</p>
+            <p class="description-project2">This is a photography reproduction. The goal of this quick project was to demonstrate that we can achieve realistic results using a realtime engine like <b>Unreal Engine 4</b>.
+            <p class="description-project2">Softwares used: 3ds Max, Photoshop, Substance Painter and Unreal Engine 4.</p>
+            <p class="description-project2">Here is the <a href="https://www.artstation.com/artwork/RYXmxD" target="blank"><b>artstation link</b></a> of the project.</p>
+
+            <p class="description-project2"><i>FR</i> - <b>Schooldesk Photography Reproduction</b> est un rendu d'image réalisé dans <b>Unreal Engine 4</b>.</p>
+            <p class="description-project2">C'est un exercice de reproduction d'une photographie. Le but de ce petit projet était de démontrer que l'on peut obtenir un rendu réaliste avec un moteur de rendu temps-réel comme <b>Unreal Engine 4</b>.
+            <p class="description-project2">Logiciels utilisés: 3ds Max, Photoshop, Substance Painter et Unreal Engine 4.</p>
+            <p class="description-project2">Voici le lien <a href="https://www.artstation.com/artwork/RYXmxD" target="blank"><b>artstation</b></a> du projet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="library">
+    <div class="container">
+      <div id="links">
+        {% for picture in project.pictures %}
+          <a href="{{ vich_uploader_asset(picture, 'imageFile') }}">
+            <img src="{{ vich_uploader_asset(picture, 'imageFile') }}" alt="{{ project.filename }}" class="img-project-library">
+          </a>
+        {% endfor %}
+      </div>
+
+      <div id="blueimp-gallery" class="blueimp-gallery">
+        <div class="slides"></div>
+        <h3 class="title"></h3>
+        <a class="prev">‹</a>
+        <a class="next">›</a>
+        <a class="close">×</a>
+        <a class="play-pause"></a>
+        <ol class="indicator"></ol>
+      </div>
+    </div>
+  </section>
 
 {% endblock body %}
