@@ -414,6 +414,85 @@ section h4, h1 {
 /* FIN ANIMATION IMAGE */
 
 
+/* LOGIN FORM */
+
+#login-container {
+	margin-top: 50px;
+    text-align: center;
+}
+
+.login-logo {
+    width: 200px;
+}
+
+.login-form {
+    width: 40%;
+    margin: 60px auto;
+}
+
+input {
+   font-family: inherit;
+   font-size: inherit;
+}
+
+.login-form input, .login-form textarea {
+
+	font-size: 14px;
+    border-top: 0;
+	border-left: 0.5px solid rgba(77, 77, 77, 0.25);
+	border-right: 0.5px solid rgba(77, 77, 77, 0.25);
+	border-bottom: 0.5px solid rgba(77, 77, 77, 0.25);
+}
+
+input::placeholder, textarea::placeholder {
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+.username {
+	border-top: 0.5px solid rgba(77, 77, 77, 0.25) !important;
+}
+
+.username, .password {
+	width: 95%;
+    box-sizing: border-box;
+	padding: 1.5em;
+}
+
+.submit {
+	display: block;
+	position: relative;
+
+	margin-top: 20px;
+    margin-left: 15px;
+	border-radius: 3px;
+	border: 0;
+
+	background: white;
+
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.submit:after {
+	position: absolute;
+	content: "";
+	left: 0;
+	bottom: -8px;
+	background: #000;
+	transition: all 0.3s ease-in;
+}
+
+.submit:after {
+	width: 0%;
+	height: 2px;
+}
+
+.submit:hover:before {height: 100%;}
+.submit:hover:after {width: 100%;}
+
+
 /* RESPONSIVE ENTRE 750PX ET 1124PX */
 
 @media screen and (min-width: 750px) and (max-width: 1124px) {
@@ -538,5 +617,22 @@ section h4, h1 {
 
     .type-project {
         margin-top: 0;
+    }
+
+    #login-container {
+        margin-top: 10px;
+    }
+
+    .login-logo {
+        margin-top: 30px;
+    }
+
+    .login-form {
+        width: 95%;
+        margin-top: 30px;
+    }
+
+    .submit {
+        margin-left: 10px;
     }
 }

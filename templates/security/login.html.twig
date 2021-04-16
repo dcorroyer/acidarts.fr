@@ -3,32 +3,20 @@
 {% block body %}
 
   <section>
-    <div class="container">
+  <div class="container">
+    <h4><a href="{{ path('project_index') }}"><span>Acidarts ></span></a> Login</h4>
+    <h1>Login</h1>
+  </div>
 
-      {% if error %}
-        <div class="alert alert-danger">
-          {{ error.messageKey | trans(error.messageData, 'security') }}
-        </div>
-      {% endif %}
+  <div class="container" id="login-container">
+    <img class="login-logo" src="{{ asset('images/logos/logo.png') }}" alt="logo">
 
-      <div class="row">
-        <div class="col-md-6 text-center" id="login_form">
-          <img class="mb-3" id="login_logo" src="{{ asset('images/logos/logo.png') }}" alt="logo">
-          <h3 id="connection-title">Connexion</h3>
-          <form action="{{ path('login') }}" method="post">
-            <div class="form-group mt-4">
-              <input type="text" class="form-control" placeholder="Your Username *" name="_username" value="{{ last_username }}" />
-            </div>
-            <div class="form-group">
-              <input type="password" class="form-control" placeholder="Your Password *" name="_password" value="" />
-            </div>
-            <div class="form-group" id="connection-button">
-              <input type="submit" class="btnSubmit" value="Login" />
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+    < class="login-form" action="{{ path('login') }}" method="post">
+      <input type="text" class="username" required placeholder="Your Username *" name="_username" value="{{ last_username }}" />
+      <input type="password" class="password" required placeholder="Your Password *" name="_password" value="" />
+      <button type="submit" class="submit">Login</button>
+    </>
+  </div>
   </section>
 
 {% endblock body %}
