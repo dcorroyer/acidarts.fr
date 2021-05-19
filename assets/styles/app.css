@@ -493,6 +493,79 @@ input::placeholder, textarea::placeholder {
 .submit:hover:after {width: 100%;}
 
 
+/* ADMINISTRATION */
+  
+  .table-projects {
+    /* border: 0.5px solid rgba(77, 77, 77, 0.25); */
+    max-width: calc(100% - 2em);
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 800px;
+  }
+
+  .table-projects-title {
+    font-size: 1.5em;
+    padding: 1rem;
+    text-transform: uppercase;
+    width: 100%;
+  }
+
+  .table-projects-title p {
+    text-align: left;
+  }
+
+  .table-projects-title i {
+    padding: 0.3rem;
+    float: right;
+    color: rgba(77, 77, 77, 0.85);
+  }
+
+  .table-projects-title i:hover {
+      color: black;
+  }
+  
+  .table-projects-list {
+    width: 100%;
+    border: 0.5px solid rgba(77, 77, 77, 0.25);
+  }
+
+  .table-projects-list th {
+    padding: 10px;
+  }
+
+  .table-projects-list tr {
+      border-bottom: 1px solid rgba(77, 77, 77, 0.25);
+  }
+
+  .table-projects-list td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+  }
+
+  .table-projects-list th {
+    background-color: rgba(77, 77, 77, 0.125);
+    font-weight: 300;
+  }
+
+  .table-projects-list td i {
+      color: rgba(77, 77, 77, 0.85);
+  }
+
+  .table-projects-list td i:hover {
+      color: black;
+  }
+
+  button{
+    border:0;
+    background:none;
+}
+
+.delete-project {
+    display: inline-block;
+}
+
+
 /* RESPONSIVE ENTRE 750PX ET 1124PX */
 
 @media screen and (min-width: 750px) and (max-width: 1124px) {
@@ -606,6 +679,10 @@ input::placeholder, textarea::placeholder {
         padding-left: 20px;
     }
 
+    section h1 {
+        font-size: 42px;
+    }
+
     .background {
         width: 30%;
         min-width: 100px;
@@ -634,5 +711,9 @@ input::placeholder, textarea::placeholder {
 
     .submit {
         margin-left: 10px;
+    }
+
+    table {
+        width: 95%;
     }
 }

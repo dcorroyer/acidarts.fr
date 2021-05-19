@@ -3,15 +3,40 @@
 {% block body %}
 
   <section>
-    <div class="wrapper">
-      <h4><a href="{{ path('home') }}"><span>Acidarts ></span></a> Projects</h4>
-      <h1>Projects</h1>
+    <div class="container">
+      <h4><a href="{{ path('admin_project_index') }}"><span>Acidarts ></span></a> Administration</h4>
+      <h1>Administration</h1>
 
       <!-- BLOCK PROJECTS -->
-      <div class="flex-container">
-        {% for project in projects %}
-          {% include 'project/_project.html.twig' %}
-        {% endfor %}
+      <div class="table-projects">
+        <div class="table-projects-title">
+          <p>Projects <a href="#"><i class="fas fa-plus-circle"></i></a></p>
+        </div>
+        
+        <table cellspacing="0" class="table-projects-list">
+            <tr>
+              <th>Position</th>
+              <th>Name</th>
+              <th>Actions</th>
+            </tr>
+
+            {% for project in projects %}
+              <tr>
+                <td>{{ project.id }}</td>
+                <td>
+                  <a href="{{ path('admin_project_edit', {id: project.id}) }}">{{ project.title }}</a>
+                </td>
+                <td>
+                  <a href="{{ path('admin_project_edit', {id: project.id}) }}"><i class="fas fa-pen"></i></a>
+                  <form method="post" action="{{ path('admin_project_delete', {id: project.id}) }}" class="delete-project" onsubmit="return confirm('Êtes vous vraiment sûr ?')">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ project.id) }}">
+                    <button type="submit"><i class="fas fa-trash"></i></button>
+                  </form>
+                </td>
+              </tr>
+            {% endfor %}
+        </table>
       </div>
       <!-- ENDBLOCK PROJECTS -->
     </div>

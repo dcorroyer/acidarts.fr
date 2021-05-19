@@ -3,20 +3,20 @@
 {% block body %}
 
   <section>
-  <div class="container">
-    <h4><a href="{{ path('project_index') }}"><span>Acidarts ></span></a> Login</h4>
-    <h1>Login</h1>
-  </div>
+    <div class="container">
+      <h4><a href="{{ path('project_index') }}"><span>Acidarts ></span></a> Login</h4>
+      <h1>Login</h1>
+    </div>
 
-  <div class="container" id="login-container">
-    <img class="login-logo" src="{{ asset('images/logos/logo.png') }}" alt="logo">
+    <div class="container" id="login-container">
+      <img class="login-logo" src="{{ asset('images/logos/logo.png') }}" alt="logo">
 
-    < class="login-form" action="{{ path('login') }}" method="post">
-      <input type="text" class="username" required placeholder="Your Username *" name="_username" value="{{ last_username }}" />
-      <input type="password" class="password" required placeholder="Your Password *" name="_password" value="" />
-      <button type="submit" class="submit">Login</button>
-    </>
-  </div>
+      <form class="login-form" action="{{ path('login') }}" method="post">
+        <input type="text" class="username" required placeholder="Your Username *" name="_username" value="{{ last_username }}" />
+        <input type="password" class="password" required placeholder="Your Password *" name="_password" value="" />
+        <button type="submit" class="submit">Login</button>
+      </form>
+    </div>
   </section>
 
 {% endblock body %}
