@@ -1,13 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Project{% endblock %}
-
 {% block body %}
 
-    <h1>Create new Project</h1>
+	<section>
+		<div class="container">
+			<h4><a href="{{ path('project_index') }}"><span>Acidarts ></span></a><a href="{{ path('admin_project_index') }}"> Administration</a></h4>
+			<h1>New project</h1>
+		</div>
 
-    {{ include('admin/project/_form.html.twig') }}
+	</section>
 
-    <a href="{{ path('admin_project_index') }}">back to list</a>
+	{{ include('admin/project/_form.html.twig', {button: 'Create'}) }}
+
+	<a href="{{ path('admin_project_index') }}">back to list</a>
 
 {% endblock body %}

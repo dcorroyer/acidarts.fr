@@ -4,7 +4,7 @@
 
   <section>
     <div class="container">
-      <h4><a href="{{ path('admin_project_index') }}"><span>Acidarts ></span></a> Administration</h4>
+      <h4><a href="{{ path('project_index') }}"><span>Acidarts ></span></a><a href="{{ path('admin_project_index') }}"> Administration</a></h4>
       <h1>Administration</h1>
 
       <!-- BLOCK PROJECTS -->
@@ -28,18 +28,23 @@
                 <td>
                   {% if project.position > 1 %}
                     <a href="" onclick="up({{ project.id }});" class="move up"><i class="fas fa-arrow-up"></i></a>
+                  {% elseif project.position < position %}
+                    <a href="" onclick="down({{ project.id }});" class="move down"><i class="fas fa-arrow-down"></i></a>
+                  {% elseif project.position > 1 and project.position < position %}
+                    <a href="" onclick="up({{ project.id }});" class="move up"><i class="fas fa-arrow-up"></i></a>
+                    <a href="" onclick="down({{ project.id }});" class="move down"><i class="fas fa-arrow-down"></i></a>
+                  {% else %}
+                    <i class="fas fa-arrows-alt-v" style="color: black;"></i>
                   {% endif %}
 
-                  {% if project.position < position %}
-                    <a href="" onclick="down({{ project.id }});" class="move down"><i class="fas fa-arrow-down"></i></a>
-                  {% endif %}
+
                 </td>
                 <td>
                   <a href="{{ path('admin_project_edit', {id: project.id}) }}">{{ project.title }}</a>
                 </td>
                 <td>
                   <a href="{{ path('admin_project_edit', {id: project.id}) }}"><i class="fas fa-pen"></i></a>
-                  <form method="post" action="{{ path('admin_project_delete', {id: project.id}) }}" class="delete-project" onsubmit="return confirm('Êtes vous vraiment sûr ?')">
+                  <form method="post" action="{{ path('admin_project_delete', {id: project.id}) }}" class="delete-project" onsubmit="return confirm('Are you sure ?')">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ project.id) }}">
                     <button type="submit"><i class="fas fa-trash"></i></button>
