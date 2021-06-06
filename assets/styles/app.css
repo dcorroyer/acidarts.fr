@@ -1,11 +1,11 @@
 /* GENERAL */
 
 @import url('https://fonts.googleapis.com/css?family=Poppins');
-
 * {
     margin: 0;
     padding: 0;
-    -moz-box-sizing: border-box; box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
@@ -13,8 +13,9 @@ body {
     min-height: 100%;
 }
 
-body, html{
-    height:100%;
+body,
+html {
+    height: 100%;
     color: #000;
 }
 
@@ -70,7 +71,7 @@ nav ul {
     float: right;
 }
 
-nav > ul::after {
+nav>ul::after {
     content: "";
     display: table;
     clear: both;
@@ -87,7 +88,6 @@ nav ul li a {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 14px;
-
     position: relative;
     display: block;
 }
@@ -106,14 +106,19 @@ nav ul li a:after {
     height: 2px;
 }
 
-nav ul li a:hover:before {height: 100%;}
-nav ul li a:hover:after {width: 100%;}
+nav ul li a:hover:before {
+    height: 100%;
+}
+
+nav ul li a:hover:after {
+    width: 100%;
+}
 
 nav input[type=checkbox] {
     display: none;
 }
 
-nav input[type=checkbox]:checked ~ ul {
+nav input[type=checkbox]:checked~ul {
     display: block;
 }
 
@@ -140,7 +145,6 @@ nav input[type=checkbox]:checked ~ ul {
 footer {
     height: 100px;
     width: 100%;
-
     position: absolute;
     bottom: 0;
 }
@@ -170,7 +174,8 @@ section h4 span {
     color: rgba(77, 77, 77, 0.5);
 }
 
-section h4, h1 {
+section h4,
+h1 {
     padding-left: 30px;
 }
 
@@ -178,7 +183,7 @@ section h4, h1 {
     margin: 50px auto;
     display: flex;
     flex-wrap: wrap;
-  }
+}
 
 .flex-item {
     display: flex;
@@ -195,37 +200,31 @@ section h4, h1 {
 
 .flex-container-project {
     margin: 0 auto;
-
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
-
     -webkit-flex-flow: row wrap;
     -moz-flex-flow: row wrap;
     -ms-flex-flow: row wrap;
     -o-flex-flow: row wrap;
     flex-flow: row wrap;
-
     justify-content: space-around;
 }
 
 #links {
     margin: 50px auto;
-
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
-
     -webkit-flex-flow: row wrap;
     -moz-flex-flow: row wrap;
     -ms-flex-flow: row wrap;
     -o-flex-flow: row wrap;
     flex-flow: row wrap;
-
     justify-content: flex-start;
 }
 
@@ -266,7 +265,6 @@ section h4, h1 {
     font-weight: 600;
     font-weight: bold;
     text-transform: uppercase;
-
     margin-bottom: 5px;
 }
 
@@ -275,7 +273,6 @@ section h4, h1 {
     font-weight: 600;
     font-weight: bold;
     text-transform: uppercase;
-
     margin-bottom: 20px;
 }
 
@@ -304,7 +301,9 @@ section h4, h1 {
     padding: 60px 0;
 }
 
+
 /* ANIMATION IMAGE */
+
 .snip1573 {
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
@@ -362,7 +361,6 @@ section h4, h1 {
     -webkit-transform: translate(-50%, -50%) scale(0.5);
     transform: translate(-50%, -50%) scale(0.5);
     opacity: 0;
-
 }
 
 .snip1573 h3 {
@@ -386,8 +384,8 @@ section h4, h1 {
     z-index: 3;
 }
 
-.snip1573:hover > img,
-.snip1573.hover > img {
+.snip1573:hover>img,
+.snip1573.hover>img {
     opacity: 0.8;
     -webkit-transition: all 250ms ease-in;
     -webkit-transform: scale(1.1);
@@ -411,13 +409,15 @@ section h4, h1 {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
 }
+
+
 /* FIN ANIMATION IMAGE */
 
 
 /* LOGIN FORM */
 
 #login-container {
-	margin-top: 50px;
+    margin-top: 50px;
     text-align: center;
 }
 
@@ -431,134 +431,144 @@ section h4, h1 {
 }
 
 input {
-   font-family: inherit;
-   font-size: inherit;
+    font-family: inherit;
+    font-size: inherit;
 }
 
-.login-form input, .login-form textarea {
-
-	font-size: 14px;
+.login-form input,
+.login-form textarea {
+    font-size: 14px;
     border-top: 0;
-	border-left: 0.5px solid rgba(77, 77, 77, 0.25);
-	border-right: 0.5px solid rgba(77, 77, 77, 0.25);
-	border-bottom: 0.5px solid rgba(77, 77, 77, 0.25);
+    border-left: 0.5px solid rgba(77, 77, 77, 0.25);
+    border-right: 0.5px solid rgba(77, 77, 77, 0.25);
+    border-bottom: 0.5px solid rgba(77, 77, 77, 0.25);
 }
 
-input::placeholder, textarea::placeholder {
-	text-transform: uppercase;
-	font-weight: 600;
+input::placeholder,
+textarea::placeholder {
+    text-transform: uppercase;
+    font-weight: 600;
 }
 
 .username {
-	border-top: 0.5px solid rgba(77, 77, 77, 0.25) !important;
+    border-top: 0.5px solid rgba(77, 77, 77, 0.25) !important;
 }
 
-.username, .password {
-	width: 95%;
+.username,
+.password {
+    width: 95%;
     box-sizing: border-box;
-	padding: 1.5em;
+    padding: 1.5em;
 }
 
 .submit {
-	display: block;
-	position: relative;
-
-	margin-top: 20px;
+    display: block;
+    position: relative;
+    margin-top: 20px;
     margin-left: 15px;
-	border-radius: 3px;
-	border: 0;
-
-	background: white;
-
-	text-transform: uppercase;
-	font-weight: bold;
-	font-size: 14px;
+    border-radius: 3px;
+    border: 0;
+    background: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
 }
 
 .submit:after {
-	position: absolute;
-	content: "";
-	left: 0;
-	bottom: -8px;
-	background: #000;
-	transition: all 0.3s ease-in;
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: -8px;
+    background: #000;
+    transition: all 0.3s ease-in;
 }
 
 .submit:after {
-	width: 0%;
-	height: 2px;
+    width: 0%;
+    height: 2px;
 }
 
-.submit:hover:before {height: 100%;}
-.submit:hover:after {width: 100%;}
+.submit:hover:before {
+    height: 100%;
+}
+
+.submit:hover:after {
+    width: 100%;
+}
 
 
 /* ADMINISTRATION */
-  
-  .table-projects {
-    /* border: 0.5px solid rgba(77, 77, 77, 0.25); */
+
+.table-projects {
     max-width: calc(100% - 2em);
     margin: 0 auto;
     margin-top: 50px;
     width: 800px;
-  }
+}
 
-  .table-projects-title {
+.table-projects-title {
     font-size: 1.5em;
     padding: 1rem;
     text-transform: uppercase;
     width: 100%;
-  }
+}
 
-  .table-projects-title p {
+.table-projects-title p {
     text-align: left;
-  }
+}
 
-  .table-projects-title i {
+.table-projects-title i {
     padding: 0.3rem;
     float: right;
     color: rgba(77, 77, 77, 0.85);
-  }
+}
 
-  .table-projects-title i:hover {
-      color: black;
-  }
-  
-  .table-projects-list {
+.table-projects-title i:hover {
+    color: black;
+}
+
+.table-projects-list {
     width: 100%;
     border: 0.5px solid rgba(77, 77, 77, 0.25);
-  }
+}
 
-  .table-projects-list th {
+.table-projects-list th {
     padding: 10px;
-  }
+}
 
-  .table-projects-list tr {
-      border-bottom: 1px solid rgba(77, 77, 77, 0.25);
-  }
+.table-projects-list tr {
+    border-bottom: 1px solid rgba(77, 77, 77, 0.25);
+}
 
-  .table-projects-list td {
+.table-projects-list tr th:first-child,
+.table-projects-list tr th:last-child {
+    width: 5%;
+}
+
+.table-projects-list td {
     text-align: center;
     vertical-align: middle;
     padding: 10px;
-  }
+}
 
-  .table-projects-list th {
+.table-projects-list th {
     background-color: rgba(77, 77, 77, 0.125);
     font-weight: 300;
-  }
+}
 
-  .table-projects-list td i {
-      color: rgba(77, 77, 77, 0.85);
-  }
+.table-projects-list td i {
+    color: rgba(77, 77, 77, 0.85);
+}
 
-  .table-projects-list td i:hover {
-      color: black;
-  }
+.table-projects-list td i:hover {
+    color: black;
+}
 
-  button{
-    border:0;
-    background:none;
+.delete-project button {
+    border: 0;
+    background: none;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .delete-project {
@@ -572,20 +582,16 @@ input::placeholder, textarea::placeholder {
     #links {
         justify-content: space-around;
     }
-
     #links a {
         width: 49.33%;
         margin: 0;
     }
-
     .flex-item {
         width: 47.5%;
     }
-
     .snip1573 {
         margin: 10%;
     }
-
     nav ul li {
         padding: 1em 1.3em;
     }
@@ -604,115 +610,96 @@ input::placeholder, textarea::placeholder {
         margin: 0;
         clear: both;
     }
-
     .container {
         width: 100%;
     }
-
     nav {
         margin-top: 10px;
         text-align: center;
-        position:absolute;
+        position: absolute;
     }
-
     nav ul {
         display: none;
         float: none;
         border-bottom: 2px solid #777;
     }
-
     nav ul li {
         background-color: #F5F5F5;
         margin-right: 0;
     }
-
     nav ul li:hover {
         background-color: rgb(228, 228, 228);
         border-radius: 0;
     }
-
     nav ul li:hover a {
         padding: 12px 0;
     }
-
-    nav ul li, nav ul li a {
+    nav ul li,
+    nav ul li a {
         width: 100%;
         padding: 12px 0;
         text-align: center;
     }
-
-    nav ul li a:hover:before {height: 0;}
-    nav ul li a:hover:after {width: 0;}
-
+    nav ul li a:hover:before {
+        height: 0;
+    }
+    nav ul li a:hover:after {
+        width: 0;
+    }
     .logo {
         float: left;
         margin-left: 5px;
         padding: 10px 0;
     }
-
     #links {
         justify-content: space-around;
     }
-
     #links a {
         width: 90%;
         margin: 0;
     }
-
     .snip1573 {
         width: 100%;
     }
-
     .flex-item {
         width: 100%;
     }
-
     .flex-item-project-img {
         width: 90%;
     }
-
     .flex-item-project-desc {
         width: 90%;
     }
-
-    section h4, h1 {
+    section h4,
+    h1 {
         padding-left: 20px;
     }
-
     section h1 {
         font-size: 42px;
     }
-
     .background {
         width: 30%;
         min-width: 100px;
     }
-
     .content {
         padding-top: 30px;
     }
-
     .type-project {
         margin-top: 0;
     }
-
     #login-container {
         margin-top: 10px;
     }
-
     .login-logo {
         margin-top: 30px;
     }
-
     .login-form {
         width: 95%;
         margin-top: 30px;
     }
-
     .submit {
         margin-left: 10px;
     }
-
     table {
         width: 95%;
     }

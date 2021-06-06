@@ -31,6 +31,11 @@ class Project
     private $id;
 
     /**
+     * @ORM\Column(name="position", type="integer")
+     */
+    private $position;
+
+    /**
      * @ORM\Column(type="string", length=100)
      */
     private $title;
@@ -85,6 +90,18 @@ class Project
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+
+    public function setPosition(int $position): self
+    {
+        $this->position = $position;
+
+        return $this;
     }
 
     public function getTitle(): ?string

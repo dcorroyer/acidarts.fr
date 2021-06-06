@@ -17,7 +17,7 @@ class DefaultController extends AbstractController
     public function indexAction(ProjectRepository $projectRepository): Response
     {
         return $this->render('project/index.html.twig', [
-            'projects' => $projectRepository->findAll(),
+            'projects' => $projectRepository->findBy([],['position'=>'ASC']),
         ]);
     }
 }

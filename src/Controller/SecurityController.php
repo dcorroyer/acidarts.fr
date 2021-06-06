@@ -32,6 +32,6 @@ class SecurityController extends AbstractController
      */
     public function logoutAction()
     {
-        throw new Exception('Il y a un problème.');
+        throw new Exception('There is a problem.');
     }
 }
