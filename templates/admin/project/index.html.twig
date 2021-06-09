@@ -7,6 +7,8 @@
       <h4><a href="{{ path('project_index') }}"><span>Acidarts ></span></a><a href="{{ path('admin_project_index') }}"> Administration</a></h4>
       <h1>Administration</h1>
 
+      <div id="root"></div>
+
       <!-- BLOCK PROJECTS -->
       <div class="table-projects">
         <div class="table-projects-title">
@@ -21,23 +23,12 @@
               <th>Actions</th>
             </tr>
           </thead>
-
           <tbody>
             {% for project in projects %}
               <tr>
                 <td>
-                  {% if project.position > 1 %}
-                    <a href="" onclick="up({{ project.id }});" class="move up"><i class="fas fa-arrow-up"></i></a>
-                  {% elseif project.position < position %}
-                    <a href="" onclick="down({{ project.id }});" class="move down"><i class="fas fa-arrow-down"></i></a>
-                  {% elseif project.position > 1 and project.position < position %}
-                    <a href="" onclick="up({{ project.id }});" class="move up"><i class="fas fa-arrow-up"></i></a>
-                    <a href="" onclick="down({{ project.id }});" class="move down"><i class="fas fa-arrow-down"></i></a>
-                  {% else %}
-                    <i class="fas fa-arrows-alt-v" style="color: black;"></i>
-                  {% endif %}
-
-
+                  <a href="" onclick="up({{ project.id }});" class="move up"><i class="fas fa-arrow-up"></i></a>
+                  <a href="" onclick="down({{ project.id }});" class="move down"><i class="fas fa-arrow-down"></i></a>
                 </td>
                 <td>
                   <a href="{{ path('admin_project_edit', {id: project.id}) }}">{{ project.title }}</a>
@@ -64,22 +55,27 @@
 
 {% block javascripts %}
 
+{{ encore_entry_script_tags('table') }}
+
   <script>
-    $('#mytable a.move').click(function() {
+    $('#mytable a.move').click(function () {
       let row = $(this).closest('tr');
       if ($(this).hasClass('up'))
         row.prev().before(row);
       else
         row.next().after(row);
     });
-    function up(element){
-      postAjax(element,"UP");
+
+    function up(element) {
+      postAjax(element, "UP");
     }
-    function down(element){
-      postAjax(element,"DOWN");
+
+    function down(element) {
+      postAjax(element, "DOWN");
     }
-    function postAjax(id,direction){
-      if(direction === "UP" || direction === "DOWN"){
+
+    function postAjax(id, direction) {
+      if (direction === "UP" || direction === "DOWN") {
         let contentSend;
         contentSend = 'id=' + id + '&direction=' + direction;
         $.ajax({
@@ -88,7 +84,7 @@
           data: contentSend,
           success: function (html) {
             console.log(html);
-            }
+          }
         });
       }
     }

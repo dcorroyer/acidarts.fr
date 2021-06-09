@@ -8,9 +8,14 @@ use App\Repository\ProjectRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class ProjectController extends AbstractController
 {
@@ -53,12 +58,26 @@ class ProjectController extends AbstractController
     public function indexAction(ProjectRepository $projectRepository): Response
     {
         $position = $this->repository->projectCount();
-        dump($position);
 
         return $this->render('admin/project/index.html.twig', [
             'projects' => $projectRepository->findBy([],['position'=>'ASC']),
             'position' => $position,
         ]);
+    }
+
+    /**
+     * @Route("/admin/projects/json", name="admin_project_json", methods={"GET"})
+     * @param ProjectRepository $projectRepository
+     * @return Response
+     */
+    public function getProjectsAction(ProjectRepository $projectRepository, SerializerInterface $serializer): Response
+    {
+        $response = new Response();
+        $response->setContent($serializer->serialize($projectRepository->findAll(), 'json', ['groups' => 'show_projects']));
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+
     }
 
     /**

@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
@@ -32,11 +33,13 @@ class Project
 
     /**
      * @ORM\Column(name="position", type="integer")
+     * @Groups("show_projects")
      */
     private $position;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Groups("show_projects")
      */
     private $title;
 
