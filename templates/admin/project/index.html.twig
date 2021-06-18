@@ -7,47 +7,14 @@
       <h4><a href="{{ path('project_index') }}"><span>Acidarts ></span></a><a href="{{ path('admin_project_index') }}"> Administration</a></h4>
       <h1>Administration</h1>
 
-      <div id="root"></div>
-
-      <!-- BLOCK PROJECTS -->
       <div class="table-projects">
         <div class="table-projects-title">
           <p>Projects <a href="{{ path('admin_project_new') }}"><i class="fas fa-plus-circle"></i></a></p>
         </div>
-        
-        <table cellspacing="0" class="table-projects-list" id="mytable">
-          <thead>
-            <tr>
-              <th>Position</th>
-              <th>Name</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for project in projects %}
-              <tr>
-                <td>
-                  <a href="" onclick="up({{ project.id }});" class="move up"><i class="fas fa-arrow-up"></i></a>
-                  <a href="" onclick="down({{ project.id }});" class="move down"><i class="fas fa-arrow-down"></i></a>
-                </td>
-                <td>
-                  <a href="{{ path('admin_project_edit', {id: project.id}) }}">{{ project.title }}</a>
-                </td>
-                <td>
-                  <a href="{{ path('admin_project_edit', {id: project.id}) }}"><i class="fas fa-pen"></i></a>
-                  <form method="post" action="{{ path('admin_project_delete', {id: project.id}) }}" class="delete-project" onsubmit="return confirm('Are you sure ?')">
-                    <input type="hidden" name="_method" value="DELETE">
-                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ project.id) }}">
-                    <button type="submit"><i class="fas fa-trash"></i></button>
-                  </form>
-                </td>
-              </tr>
-            {% endfor %}
-          </tbody>
 
-        </table>
+        {# React drag and drop table for the projects #}
+        <div id="root"></div>
       </div>
-      <!-- ENDBLOCK PROJECTS -->
     </div>
   </section>
 
@@ -55,39 +22,6 @@
 
 {% block javascripts %}
 
-{{ encore_entry_script_tags('table') }}
-
-  <script>
-    $('#mytable a.move').click(function () {
-      let row = $(this).closest('tr');
-      if ($(this).hasClass('up'))
-        row.prev().before(row);
-      else
-        row.next().after(row);
-    });
-
-    function up(element) {
-      postAjax(element, "UP");
-    }
-
-    function down(element) {
-      postAjax(element, "DOWN");
-    }
-
-    function postAjax(id, direction) {
-      if (direction === "UP" || direction === "DOWN") {
-        let contentSend;
-        contentSend = 'id=' + id + '&direction=' + direction;
-        $.ajax({
-          url: '/admin/move/position',
-          type: 'POST',
-          data: contentSend,
-          success: function (html) {
-            console.log(html);
-          }
-        });
-      }
-    }
-  </script>
+  {{ encore_entry_script_tags('table') }}
 
 {% endblock javascripts %}

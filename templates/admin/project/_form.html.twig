@@ -27,29 +27,30 @@
 
 <section class="library">
 	<div class="container">
-    <div class="flex-container">
-      {% for picture in project.pictures %}
-        <div class="flex-item">
-          <div class="flex-image">
-            <img src="{{ vich_uploader_asset(picture, 'imageFile') }}" alt="{{ project.filename }}" class="img-project-library">
-            {# <form method="post" action="{{ path('admin_picture_delete', {id: picture.id}) }}" onsubmit="return confirm('Are you sure ?')" class="delete-image">
+		<div class="flex-container">
+			{% for picture in project.pictures %}
+				<div class="flex-item">
+					<div class="flex-image">
+						<img
+						src="{{ vich_uploader_asset(picture, 'imageFile') }}" alt="{{ project.filename }}" class="img-project-library">
+					{# <form method="post" action="{{ path('admin_picture_delete', {id: picture.id}) }}" onsubmit="return confirm('Are you sure ?')" class="delete-image">
               <input type="hidden" name="_method" value="DELETE">
               <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ picture.id) }}">
               <button type="submit">Detach</button>
             </form> #}
-          </div>
-        </div>
-      {% endfor %}
-    </div>
-		{# <div id="file">
-			{% for picture in project.pictures %}
-        <img src="{{ vich_uploader_asset(picture, 'imageFile') }}" alt="{{ project.filename }}" class="img-project-library">
-				<form method="post" action="{{ path('admin_picture_delete', {id: picture.id}) }}" onsubmit="return confirm('Are you sure ?')" class="delete-image">
-					<input type="hidden" name="_method" value="DELETE">
-					<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ picture.id) }}">
-					<button type="submit">Detach</button>
-				</form>
+					</div>
+				</div>
 			{% endfor %}
-		</div> #}
+		</div>
+		{# <div id="file">
+      {% for picture in project.pictures %}
+        <img src="{{ vich_uploader_asset(picture, 'imageFile') }}" alt="{{ project.filename }}" class="img-project-library">
+        <form method="post" action="{{ path('admin_picture_delete', {id: picture.id}) }}" onsubmit="return confirm('Are you sure ?')" class="delete-image">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ picture.id) }}">
+          <button type="submit">Detach</button>
+        </form>
+      {% endfor %}
+    </div> #}
 	</div>
 </section>

@@ -57,11 +57,8 @@ class ProjectController extends AbstractController
      */
     public function indexAction(ProjectRepository $projectRepository): Response
     {
-        $position = $this->repository->projectCount();
-
         return $this->render('admin/project/index.html.twig', [
             'projects' => $projectRepository->findBy([],['position'=>'ASC']),
-            'position' => $position,
         ]);
     }
 
@@ -153,52 +150,5 @@ class ProjectController extends AbstractController
         }
 
         return $this->redirectToRoute('admin_project_index');
-    }
-
-    /**
-     * @Route("/admin/move/position", name="admin_move_position", methods={"POST"})
-     * @param  EntityManagerInterface $manager
-     * @param  Request $request
-     * @return Response
-     */
-    public function movePosition(EntityManagerInterface $manager, Request $request): Response
-    {
-        $direction = $request->request->get('direction');
-        $id        = $request->request->get('id');
-        $project   = $manager
-            ->getRepository(Project::class)
-            ->findOneBy(['id' => $id]);
-
-        if ($project && ($direction == "UP" || $direction =="DOWN")) {
-            if ($direction == "UP") {
-                $newProject  = $project->getPosition()-1;
-                $nextProject = $manager->getRepository(Project::class)->findOneBy(['position'=>$newProject]);
-
-                $nextProject->setPosition($nextProject->getPosition()+1);
-                $project->setPosition($newProject);
-                $manager->persist($nextProject);
-
-            } elseif ($direction == "DOWN") {
-                $newProject      = $project->getPosition()+1;
-                $previousProject = $manager
-                    ->getRepository(Project::class)
-                    ->findOneBy(['position'=>$newProject]);
-
-                $previousProject->setPosition($previousProject->getPosition()-1);
-                $project->setPosition($newProject);
-                $manager->persist($previousProject);
-
-            }
-
-            $manager->persist($project);
-            $manager->flush();
-            $response = "Le projet est à la place ".$project->getPosition();
-        } else {
-            $response = false;
-        }
-
-        return new Response(
-            $response
-        );
     }
 }

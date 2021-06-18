@@ -558,6 +558,7 @@ textarea::placeholder {
 
 .table-projects-list td i {
     color: rgba(77, 77, 77, 0.85);
+    padding: 0.25em;
 }
 
 .table-projects-list td i:hover {
