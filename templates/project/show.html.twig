@@ -41,26 +41,28 @@
     </div>
   </section>
 
-  <section class="library">
-    <div class="container">
-      <div id="links">
-        {% for picture in project.pictures %}
-          <a href="{{ vich_uploader_asset(picture, 'imageFile') }}">
-            <img src="{{ vich_uploader_asset(picture, 'imageFile') }}" alt="{{ project.filename }}" class="img-project-library">
-          </a>
-        {% endfor %}
-      </div>
+  {% if project.pictures is defined and project.pictures is not empty %}
+    <section class="library">
+      <div class="container">
+        <div id="links">
+          {% for picture in project.pictures %}
+            <a href="{{ vich_uploader_asset(picture, 'imageFile') }}">
+              <img src="{{ vich_uploader_asset(picture, 'imageFile') }}" alt="{{ project.filename }}" class="img-project-library">
+            </a>
+          {% endfor %}
+        </div>
 
-      <div id="blueimp-gallery" class="blueimp-gallery">
-        <div class="slides"></div>
-        <h3 class="title"></h3>
-        <a class="prev">‹</a>
-        <a class="next">›</a>
-        <a class="close">×</a>
-        <a class="play-pause"></a>
-        <ol class="indicator"></ol>
+        <div id="blueimp-gallery" class="blueimp-gallery">
+          <div class="slides"></div>
+          <h3 class="title"></h3>
+          <a class="prev">‹</a>
+          <a class="next">›</a>
+          <a class="close">×</a>
+          <a class="play-pause"></a>
+          <ol class="indicator"></ol>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  {% endif %}
 
 {% endblock body %}
