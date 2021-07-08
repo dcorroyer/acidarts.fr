@@ -20,4 +20,13 @@ class DefaultController extends AbstractController
             'projects' => $projectRepository->findBy([],['position'=>'ASC']),
         ]);
     }
+
+    /**
+     * @Route("/about", name="about_index")
+     * @return Response
+     */
+    public function aboutShowAction(): Response
+    {
+        return $this->render('about/index.html.twig');
+    }
 }
