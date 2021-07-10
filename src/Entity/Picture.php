@@ -45,11 +45,18 @@ class Picture
         return $this->id;
     }
 
+    /**
+     * @return string|null
+     */
     public function getFileName(): ?string
     {
         return $this->fileName;
     }
 
+    /**
+     * @param string|null $fileName
+     * @return $this
+     */
     public function setFileName(?string $fileName): self
     {
         $this->fileName = $fileName;
@@ -76,11 +83,18 @@ class Picture
         return $this;
     }
 
+    /**
+     * @return Project|null
+     */
     public function getProject(): ?Project
     {
         return $this->project;
     }
 
+    /**
+     * @param Project|null $project
+     * @return $this
+     */
     public function setProject(?Project $project): self
     {
         $this->project = $project;
