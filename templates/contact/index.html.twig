@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<section>
+		<div class="container">
+			<h4><a href="{{ path('project_index') }}"><span>Acidarts ></span></a> Contact</h4>
+			<h1>Contact</h1>
+
+			<div class="flex-container-element">
+				<div class="flex-item-project-img">
+					<div class="contact">
+						{{ form_start(form) }}
+						{{ form_widget(form) }}
+						<button id="button">{{ button|default('Send / Envoyer') }}</button>
+						{{ form_end(form) }}
+					</div>
+				</div>
+
+				<div class="flex-item-project-desc">
+					<div class="identification-about">
+						<p class="title-contact">Feel free to contact me for more informations on my work or for any other inquiries.</p>
+						<p class="title-contact">N'hésitez pas à me contacter pour plus d'informations sur mon travail ou pour toutes autres demandes.</p>
+						<p class="description-contact">SOCIAL NETWORK</p>
+
+            <a href="https://www.artstation.com/acidarts" target="_blank"><img src="{{ asset('images/contact/artstation.jpg') }}" class="img-social" alt="artstation"></a>
+            <a href="https://www.linkedin.com/in/jeanbaptiste-sottile-16726790/" target="_blank"><img src="{{ asset('images/contact/in.jpg') }}" class="img-social" alt="linkedin"></a>
+            <a href="https://vimeo.com/acidarts" target="_blank"><img src="{{ asset('images/contact/vimeo.jpg') }}" class="img-social" alt="vimeo"></a>
+            <a href="https://join.skype.com/invite/d7yAsg57DYqs" target="_blank"><img src="{{ asset('images/contact/skype.jpg') }}" class="img-social" alt="skype"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock body %}

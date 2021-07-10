@@ -654,8 +654,96 @@ textarea::placeholder {
     margin-top: 5px;
 }
 
-.work {
+
+/* CONTACT */
+
+.title-contact {
+	font-size: 0.875em;
+    font-weight: 600;
+	font-weight: bold;
+	margin-bottom: 20px;
 }
+
+.description-contact {
+	font-size: 0.875em;
+    font-weight: 600;
+	color: rgba(77, 77, 77, 0.5);
+}
+
+.img-social {
+	width: 7.5%;
+}
+
+.contact {
+    margin-top: 50px;
+}
+
+input, textarea {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.contact input, .contact textarea {
+    font-size: 14px;
+    border: 0;
+    border-left: 0.5px solid rgba(77, 77, 77, 0.25);
+    border-right: 0.5px solid rgba(77, 77, 77, 0.25);
+    border-bottom: 0.5px solid rgba(77, 77, 77, 0.25);
+}
+
+.contact .surname {
+	border-top: 0.5px solid rgba(77, 77, 77, 0.125);
+}
+
+.contact textarea {
+	height: 250px;
+}
+
+.surname, .name, .email, .subject {
+	width: 70%;
+    box-sizing: border-box;
+	padding: 1.5em;
+}
+
+.message {
+	width: 70%;
+    box-sizing: border-box;
+	padding: 1.5em;
+}
+
+#button {
+    display: block;
+    position: relative;
+
+    margin: 20px 0;
+    border-radius: 3px;
+    border: 0;
+
+    background: white;
+
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+#button:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: -8px;
+    background: #000;
+    transition: all 0.3s ease-in;
+}
+
+#button:after {
+    width: 0%;
+    height: 2px;
+}
+
+#button:hover:before {height: 100%;}
+#button:hover:after {width: 100%;}
 
 
 /* RESPONSIVE ENTRE 750PX ET 1124PX */
