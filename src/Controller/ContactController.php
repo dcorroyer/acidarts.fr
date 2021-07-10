@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Contact;
 use App\Form\ContactType;
+use Flasher\Toastr\Prime\ToastrFactory;
 use Swift_Mailer;
 use Swift_Message;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,7 +20,7 @@ class ContactController extends AbstractController
      * @param Swift_Mailer $mailer
      * @return Response
      */
-    public function index(Request $request, Swift_Mailer $mailer): Response
+    public function index(Request $request, Swift_Mailer $mailer, ToastrFactory $flasher): Response
     {
         $contact = new Contact();
         $form    = $this->createForm(ContactType::class, $contact);
@@ -38,6 +39,8 @@ class ContactController extends AbstractController
             ;
 
             $mailer->send($message);
+
+            $flasher->addSuccess('Email sent successfully!');
 
             return $this->redirectToRoute('contact_index');
         }
