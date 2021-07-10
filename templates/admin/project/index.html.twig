@@ -7,6 +7,8 @@
       <h4><a href="{{ path('project_index') }}"><span>Acidarts ></span></a><a href="{{ path('admin_project_index') }}"> Administration</a></h4>
       <h1>Administration</h1>
 
+      {{ flasher_render() }}
+
       <div class="table-projects">
         <div class="table-projects-title">
           <p>Projects <a href="{{ path('admin_project_new') }}"><i class="fas fa-plus-circle"></i></a></p>
