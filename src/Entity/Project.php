@@ -21,6 +21,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\Entity(repositoryClass=ProjectRepository::class)
  * @UniqueEntity("title")
  * @Vich\Uploadable()
+ * @ORM\HasLifecycleCallbacks()
  */
 class Project
 {
@@ -43,6 +44,11 @@ class Project
      * @Groups("show_projects")
      */
     private $title;
+
+    /**
+     * @ORM\Column(type="string", length=100, unique=true)
+     */
+    private $slug;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -90,10 +96,16 @@ class Project
      */
     private $pictures;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Video::class, mappedBy="project", orphanRemoval=true, cascade={"persist"})
+     */
+    private $videos;
+
     public function __construct()
     {
         $this->createdAt = new DateTime();
         $this->pictures = new ArrayCollection();
+        $this->videos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -320,10 +332,59 @@ class Project
     }
 
     /**
+     * @return void
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     */
+    public function postPersist(): void
+    {
+        $this->setSlug((new Slugify())->slugify($this->title));
+    }
+
+    /**
      * @return string
      */
     public function getSlug(): string
     {
-        return (new Slugify())->slugify($this->title);
+        return $this->slug;
+    }
+
+    /**
+     * @return string
+     */
+    public function setSlug(?string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Video[]
+     */
+    public function getVideos(): Collection
+    {
+        return $this->videos;
+    }
+
+    public function addVideo(Video $video): self
+    {
+        if (!$this->videos->contains($video)) {
+            $this->videos[] = $video;
+            $video->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVideo(Video $video): self
+    {
+        if ($this->videos->removeElement($video)) {
+            if ($video->getProject() === $this) {
+                $video->setProject(null);
+            }
+        }
+
+        return $this;
     }
 }

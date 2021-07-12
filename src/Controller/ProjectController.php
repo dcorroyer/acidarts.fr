@@ -38,8 +38,7 @@ class ProjectController extends AbstractController
 
     ### FRONT-OFFICE ###
     /**
-     * @Route("/projects/{slug}-{id}", name="project_show", methods={"GET"}, requirements={"slug": "[a-z0-9\-]*"})
-     * @Security("project.getSlug() == slug")
+     * @Route("/projects/{slug}", name="project_show", methods={"GET"}, requirements={"slug": "[a-z0-9\-]*"})
      * @param  Project $project
      * @return Response
      */

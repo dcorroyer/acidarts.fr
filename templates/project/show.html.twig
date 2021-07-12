@@ -64,4 +64,14 @@
     </section>
   {% endif %}
 
+  <section>
+    <div class="container">
+      {% for video in project.videos %}
+        <div class="project-video text-center" id="projects_videos">
+          <iframe width="560" height="315" src="{{ video.videoname|replace({'watch?v=' : "embed/"}) }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
 {% endblock body %}
