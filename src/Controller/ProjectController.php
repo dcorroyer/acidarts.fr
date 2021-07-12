@@ -153,6 +153,8 @@ class ProjectController extends AbstractController
             $flasher->addSuccess('Project deleted successfully!');
         }
 
+        //return new Response();
+
         return $this->redirectToRoute('admin_project_index');
     }
 }

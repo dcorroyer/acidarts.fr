@@ -8,12 +8,15 @@ const token = projectRating.dataset.token;
 const Table = () => {
 
   const [projects, setProjects] = useState([]);
+
   useEffect(() => {
-    axios.get('/admin/projects/json').then(result => setProjects(result.data));
+    axios
+      .get('/admin/projects/json')
+      .then(result => setProjects(result.data));
   }, []);
 
   return (
-    <table cellspacing="0" class="table-projects-list">
+    <table cellSpacing="0" className="table-projects-list">
       <thead>
         <tr>
           <th>Position</th>
@@ -25,10 +28,19 @@ const Table = () => {
         {projects && projects.map(project =>
           <tr key={project.id}>
             <td>{project.position}</td>
-            <td><a href={ Routing.generate('admin_project_edit', { id: project.id }) }>{project.title}</a></td>
+            <td><a href={Routing.generate('admin_project_edit', { id: project.id })}>{project.title}</a></td>
             <td>
-              <a href={ Routing.generate('admin_project_edit', { id: project.id }) }><i class="fas fa-pen"></i></a>
-              <a href={ Routing.generate('admin_project_delete', { id: project.id, token: token }) }><i class="fas fa-trash"></i></a>
+              <a href={Routing.generate('admin_project_edit', { id: project.id })}><i class="fas fa-pen"></i></a>
+              <button
+                className="project-delete-button"
+                onClick={() => {
+                  if (
+                    window.confirm('Are you sure you want to delete this project?'))
+                    location.replace(Routing.generate('admin_project_delete', { id: project.id, token: token })
+                  )
+                }}>
+                <i class="fas fa-trash"></i>
+              </button>
             </td>
           </tr>
         )}
