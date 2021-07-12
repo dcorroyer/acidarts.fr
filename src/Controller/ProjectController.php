@@ -6,6 +6,7 @@ use App\Entity\Project;
 use App\Form\ProjectType;
 use App\Repository\ProjectRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Flasher\Toastr\Prime\ToastrFactory;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -82,7 +83,7 @@ class ProjectController extends AbstractController
      * @param  Request $request
      * @return Response
      */
-    public function newAction(Request $request): Response
+    public function newAction(Request $request, ToastrFactory $flasher): Response
     {
         $project = new Project();
         $form    = $this->createForm(ProjectType::class, $project);
@@ -94,7 +95,8 @@ class ProjectController extends AbstractController
             $project->setPosition(intval($position) + 1);
             $this->em->persist($project);
             $this->em->flush();
-            $this->addFlash('success', 'Project created with success !');
+            
+            $flasher->addSuccess('Project created successfully!');
 
             return $this->redirectToRoute('admin_project_index');
         }
@@ -111,14 +113,15 @@ class ProjectController extends AbstractController
      * @param  Project $project
      * @return Response
      */
-    public function editAction(Request $request, Project $project): Response
+    public function editAction(Request $request, Project $project, ToastrFactory $flasher): Response
     {
         $form = $this->createForm(ProjectType::class, $project);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->em->flush();
-            $this->addFlash('success', 'The project has been modified with success !');
+            
+            $flasher->addSuccess('Project edited successfully!');
 
             return $this->redirectToRoute('admin_project_index');
         }
@@ -135,7 +138,7 @@ class ProjectController extends AbstractController
      * @param  Project $project
      * @return Response
      */
-    public function deleteAction(Request $request, Project $project, $token): Response
+    public function deleteAction(Request $request, Project $project, ToastrFactory $flasher, $token): Response
     {
         if ($this->isCsrfTokenValid($this->getUser()->getId(), $token)) {
             $this->em->remove($project);
@@ -146,7 +149,8 @@ class ProjectController extends AbstractController
             }
 
             $this->em->flush();
-            $this->addFlash('success', 'The project has been deleted with success !');
+            
+            $flasher->addSuccess('Project deleted successfully!');
         }
 
         return $this->redirectToRoute('admin_project_index');

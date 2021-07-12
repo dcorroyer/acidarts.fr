@@ -45,6 +45,11 @@ class Project
     private $title;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $type;
+
+    /**
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
@@ -96,11 +101,18 @@ class Project
         return $this->id;
     }
 
+    /**
+     * @return int|null
+     */
     public function getPosition(): ?int
     {
         return $this->position;
     }
 
+    /**
+     * @param int $position
+     * @return $this
+     */
     public function setPosition(int $position): self
     {
         $this->position = $position;
@@ -108,11 +120,18 @@ class Project
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getTitle(): ?string
     {
         return $this->title;
     }
 
+    /**
+     * @param string $title
+     * @return $this
+     */
     public function setTitle(string $title): self
     {
         $this->title = $title;
@@ -120,11 +139,37 @@ class Project
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     * @return $this
+     */
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
+    /**
+     * @param string|null $description
+     * @return $this
+     */
     public function setDescription(?string $description): self
     {
         $this->description = $description;
@@ -132,11 +177,18 @@ class Project
         return $this;
     }
 
+    /**
+     * @return DateTimeInterface|null
+     */
     public function getCreatedAt(): ?DateTimeInterface
     {
         return $this->createdAt;
     }
 
+    /**
+     * @param DateTimeInterface $createdAt
+     * @return $this
+     */
     public function setCreatedAt(DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
@@ -144,11 +196,18 @@ class Project
         return $this;
     }
 
+    /**
+     * @return DateTimeInterface|null
+     */
     public function getUpdatedAt(): ?DateTimeInterface
     {
         return $this->updatedAt;
     }
 
+    /**
+     * @param DateTimeInterface $updatedAt
+     * @return $this
+     */
     public function setUpdatedAt(DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
@@ -230,6 +289,10 @@ class Project
         return $this->pictures;
     }
 
+    /**
+     * @param Picture $picture
+     * @return $this
+     */
     public function addPicture(Picture $picture): self
     {
         if (!$this->pictures->contains($picture)) {
@@ -240,6 +303,10 @@ class Project
         return $this;
     }
 
+    /**
+     * @param Picture $picture
+     * @return $this
+     */
     public function removePicture(Picture $picture): self
     {
         if ($this->pictures->contains($picture)) {
@@ -252,9 +319,11 @@ class Project
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getSlug(): string
     {
         return (new Slugify())->slugify($this->title);
     }
-
 }
