@@ -1,4 +1,8 @@
 import '../styles/app.css';
+import { Routing } from './routes.js';
+
+
+console.log(Routing.generate('admin_project_edit', { id: 1 }));
 
 /* Demo purposes only */
 $(".hover").mouseleave(

@@ -106,7 +106,7 @@ class ProjectController extends AbstractController
     }
 
     /**
-     * @Route("/admin/projects/{id}/edit", name="admin_project_edit", methods={"GET","POST"})
+     * @Route("/admin/projects/{id}/edit", name="admin_project_edit", methods={"GET","POST"}, options={"expose" = true})
      * @param  Request $request
      * @param  Project $project
      * @return Response
@@ -130,14 +130,14 @@ class ProjectController extends AbstractController
     }
 
     /**
-     * @Route("/admin/projects/{id}", name="admin_project_delete", methods={"DELETE"})
+     * @Route("/admin/projects/{id}/{token}", name="admin_project_delete", methods={"GET","DELETE"}, options={"expose" = true})
      * @param  Request $request
      * @param  Project $project
      * @return Response
      */
-    public function deleteAction(Request $request, Project $project): Response
+    public function deleteAction(Request $request, Project $project, $token): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$project->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid($this->getUser()->getId(), $token)) {
             $this->em->remove($project);
             $projects = $this->repository->projectsHigherPosition($project->getPosition());
 

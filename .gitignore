@@ -19,6 +19,7 @@ migrations/
 .env
 .idea/
 /public/uploads/
+/public/js/
 ###< others ###
 
 ###> symfony/webpack-encore-bundle ###
