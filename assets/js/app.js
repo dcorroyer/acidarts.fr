@@ -1,4 +1,5 @@
 import '../styles/app.css';
+import { Routing } from './routes.js';
 
 /* Demo purposes only */
 $(".hover").mouseleave(

@@ -14,6 +14,8 @@
           <p>Projects <a href="{{ path('admin_project_new') }}"><i class="fas fa-plus-circle"></i></a></p>
         </div>
 
+        {# csrf token protection for the projects delete #}
+        <div class="js-project" data-token="{{ csrf_token(app.user.id) }}"></div>
         {# React drag and drop table for the projects #}
         <div id="root"></div>
       </div>
