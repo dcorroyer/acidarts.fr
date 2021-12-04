@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Back;
 
 use App\Entity\Video;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

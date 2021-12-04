@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Back;
 
 use App\Entity\Project;
 use App\Form\ProjectType;
@@ -31,20 +31,6 @@ class ProjectController extends AbstractController
         $this->em         = $em;
     }
 
-    ### FRONT-OFFICE ###
-    /**
-     * @Route("/projects/{slug}", name="project_show", methods={"GET"}, requirements={"slug": "[a-z0-9\-]*"})
-     * @param  Project $project
-     * @return Response
-     */
-    public function showAction(Project $project): Response
-    {
-        return $this->render('project/show.html.twig', [
-            'project' => $project,
-        ]);
-    }
-
-    ### BACK-OFFICE ###
     /**
      * @Route("/admin", name="admin_project_index", methods={"GET"})
      * @param  ProjectRepository $projectRepository
@@ -117,7 +103,7 @@ class ProjectController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->em->flush();
-            
+
             $flasher->addSuccess('Project edited successfully!');
 
             return $this->redirectToRoute('admin_project_index');
@@ -148,7 +134,7 @@ class ProjectController extends AbstractController
             }
 
             $this->em->flush();
-            
+
             $flasher->addSuccess('Project deleted successfully!');
         }
 
