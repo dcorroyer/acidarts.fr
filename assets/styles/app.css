@@ -539,7 +539,6 @@ textarea::placeholder {
     border-bottom: 1px solid rgba(77, 77, 77, 0.25);
 }
 
-.table-projects-list tr th:first-child,
 .table-projects-list tr th:last-child {
     width: 5%;
 }

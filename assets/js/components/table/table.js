@@ -53,7 +53,6 @@ const Table = () => {
       <table cellSpacing="0" className="table-projects-list">
       <thead>
         <tr>
-          <th>Position</th>
           <th>Name</th>
           <th>Actions</th>
         </tr>
@@ -72,7 +71,6 @@ const Table = () => {
                         {...provided.dragHandleProps}
                         key={project.id}
                     >
-                      <td>{project.position}</td>
                       <td><a href={Routing.generate('admin_project_edit', { id: project.id })}>{project.title}</a></td>
                       <td>
                         <a href={Routing.generate('admin_project_edit', { id: project.id })}><i className="fas fa-pen"></i></a>
