@@ -40,7 +40,7 @@ class Project
     private $position;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, unique=true)
      * @Groups("show_projects")
      */
     private $title;
@@ -52,6 +52,7 @@ class Project
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotNull()
      */
     private $type;
 

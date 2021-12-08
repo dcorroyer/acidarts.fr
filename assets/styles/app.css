@@ -616,6 +616,41 @@ textarea::placeholder {
     cursor: pointer;
 }
 
+.flex-form {
+    width: 60%;
+}
+
+.project-form {
+    margin-top: 50px;
+    width: 100%;
+}
+
+.project-form .title,
+.project-form .choices,
+.project-form .description,
+.project-form .thumbfile,
+.project-form .imagefiles {
+    width: 100%;
+    padding: 1em;
+    border: 1px solid lightgrey;
+}
+
+.project-form .description,
+.project-form .imagefiles {
+    margin-top: 5px;
+}
+
+.project-form input {
+    border: 2px solid red;
+}
+
+.project-form input:hover {
+    cursor: pointer;
+}
+
+#project_type {
+}
+
 
 /* ABOUT  */
 

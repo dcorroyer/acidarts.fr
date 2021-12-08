@@ -17,10 +17,20 @@ class ProjectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class)
+            ->add('title', TextType::class, [
+                'attr'  => [
+                    'class'       => 'title',
+                    'placeholder' => 'TITLE *'
+                ],
+                'label' => false
+            ])
             ->add('type', ChoiceType::class, [
+                'attr'    => [
+                    'class' => 'choices'
+                ],
                 'choices' => [
                     'Type of 3D project' => [
+                        '-- Select the type --'     => null,
                         '3d realtime rendering'     => '3d realtime rendering',
                         '3d realtime application'   => '3d realtime application',
                         '3d mobile rendering'       => '3d mobile rendering',
@@ -28,21 +38,41 @@ class ProjectType extends AbstractType
                         '3d architecture rendering' => '3d architecture rendering',
                     ],
                 ],
+                'label'   => false
             ])
-            ->add('description', TextareaType::class)
+            ->add('description', TextareaType::class, [
+                'attr'  => [
+                    'class'       => 'description',
+                    'placeholder' => 'DESCRIPTION *'
+                ],
+                'label' => false,
+                'required' => false
+            ])
             ->add('thumbFile', FileType::class, [
+                'attr'     => [
+                    'class' => 'thumbfile'
+                ],
+                'label'    => false,
                 'required' => false
             ])
             ->add('imageFiles', FileType::class, [
-                'required' => false,
-                'multiple' => true
+                'attr'     => [
+                    'class' => 'imagefiles'
+                ],
+                'label'    => false,
+                'multiple' => true,
+                'required' => false
             ])
             ->add('videos', CollectionType::class, [
-                'entry_type'    => VideoType::class,
-                'entry_options' => ['label' => false],
                 'allow_add'     => true,
                 'allow_delete'  => true,
-                'by_reference'  => false
+                'attr'          => [
+                    'class' => 'videos'
+                ],
+                'by_reference'  => false,
+                'entry_options' => ['label' => false],
+                'entry_type'    => VideoType::class,
+                'label'         => false
             ])
         ;
     }
