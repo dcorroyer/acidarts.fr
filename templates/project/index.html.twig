@@ -7,13 +7,11 @@
       <h4><a href="{{ path('project_index') }}"><span>Acidarts ></span></a> Projects</h4>
       <h1>Projects</h1>
 
-      <!-- BLOCK PROJECTS -->
       <div class="flex-container">
         {% for project in projects %}
           {% include 'project/_project.html.twig' %}
         {% endfor %}
       </div>
-      <!-- ENDBLOCK PROJECTS -->
     </div>
   </section>
 

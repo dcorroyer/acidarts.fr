@@ -6,11 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}Acidarts - 3D Artist{% endblock %}</title>
 
-  <!-- FAVICON -->
   <link rel="shortcut icon" type="image/png" href="{{ asset('images/logos/favicon.png') }}" />
   <link rel="icon" type="image/png" href="{{ asset('images/logos/favicon.png') }}" />
 
-  <!-- CSS/JS -->
   <link href="{{ asset('css/lity.css') }}" rel="stylesheet">
   <link href="{{ asset('css/blueimp-gallery.min.css') }}" rel="stylesheet">
   <script src="{{ asset('js/jquery.js') }}"></script>
@@ -26,7 +24,6 @@
 <img src="{{ asset('images/logos/background.svg') }}" alt="background" class="background">
 
 <div class="main">
-  <!-- BLOCK HEADER -->
   <header>
     <div class="container">
       <nav>
@@ -41,15 +38,11 @@
       </nav>
     </div>
   </header>
-  <!-- ENDBLOCK HEADER -->
 
-  <!-- BLOCK CONTENT -->
   <div class="content">
     {% block body %}{% endblock body %}
   </div>
-  <!-- ENDBLOCK CONTENT -->
 
-  <!-- BLOCK FOOTER -->
   <footer>
     <div class="container">
       <div class="copyright">
@@ -57,14 +50,12 @@
       </div>
     </div>
   </footer>
-  <!-- ENDBLOCK FOOTER -->
 </div>
 
 {% block javascripts %}
   {{ encore_entry_script_tags('app') }}
 {% endblock javascripts %}
 
-<!-- JS/JQUERY -->
 <script src="{{ asset('js/lity.js') }}"></script>
 <script src="{{ asset('js/blueimp-gallery.min.js') }}"></script>
 <script src="{{ asset('js/popper.min.js') }}"></script>

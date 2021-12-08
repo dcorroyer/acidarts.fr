@@ -2,10 +2,10 @@
 
 {% block body %}
 
-	<section>
-		<div class="container">
-			<h4><a href="{{ path('project_index') }}"><span>Acidarts ></span></a><a href="{{ path('admin_project_index') }}"> Administration</a></h4>
-			<h1>Edit project</h1>
+  <section>
+    <div class="container">
+      <h4><a href="{{ path('project_index') }}"><span>Acidarts ></span></a><a href="{{ path('admin_project_index') }}"> Administration</a></h4>
+      <h1>Edit project</h1>
 
       {{ include('admin/project/_form.html.twig', {button: 'Update'}) }}
 
