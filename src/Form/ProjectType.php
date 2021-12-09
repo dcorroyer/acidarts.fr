@@ -21,8 +21,7 @@ class ProjectType extends AbstractType
                 'attr'  => [
                     'class'       => 'title',
                     'placeholder' => 'TITLE *'
-                ],
-                'label' => false
+                ]
             ])
             ->add('type', ChoiceType::class, [
                 'attr'    => [
@@ -36,30 +35,28 @@ class ProjectType extends AbstractType
                         '3d mobile rendering'       => '3d mobile rendering',
                         '3d video game'             => '3d video game',
                         '3d architecture rendering' => '3d architecture rendering',
-                    ],
-                ],
-                'label'   => false
+                    ]
+                ]
             ])
             ->add('description', TextareaType::class, [
                 'attr'  => [
                     'class'       => 'description',
                     'placeholder' => 'DESCRIPTION *'
                 ],
-                'label' => false,
                 'required' => false
             ])
             ->add('thumbFile', FileType::class, [
                 'attr'     => [
                     'class' => 'thumbfile'
                 ],
-                'label'    => false,
+                'label'    => 'Thumbnail',
                 'required' => false
             ])
             ->add('imageFiles', FileType::class, [
                 'attr'     => [
                     'class' => 'imagefiles'
                 ],
-                'label'    => false,
+                'label'    => 'Images',
                 'multiple' => true,
                 'required' => false
             ])

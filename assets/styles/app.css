@@ -632,23 +632,39 @@ textarea::placeholder {
 .project-form .imagefiles {
     width: 100%;
     padding: 1em;
-    border: 1px solid lightgrey;
+    border: 1px solid rgba(77, 77, 77, 0.25);
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.project-form .description {
+    resize: none;
+    margin-bottom: 15px;
 }
 
 .project-form .description,
 .project-form .imagefiles {
-    margin-top: 5px;
 }
 
-.project-form input {
-    border: 2px solid red;
+.project-form .title:focus,
+.project-form .description:focus,
+.project-form .thumbfile:focus,
+.project-form .imagefiles:focus {
+    outline: none;
+    border: 1px solid black;
 }
 
-.project-form input:hover {
+.project-form .choices:focus {
+    outline: none;
+}
+
+.project-form .thumbfile:hover,
+.project-form .imagefiles:hover {
     cursor: pointer;
 }
 
-#project_type {
+.project-form button {
+    display: inline-block !important;
 }
 
 
@@ -738,8 +754,15 @@ input, textarea {
 	border-top: 0.5px solid rgba(77, 77, 77, 0.125);
 }
 
+.contact input:focus,
+.contact textarea:focus {
+    outline: none;
+    border: 1px solid black;
+}
+
 .contact textarea {
 	height: 250px;
+    resize: none;
 }
 
 .surname, .name, .email, .subject {
@@ -787,6 +810,39 @@ input, textarea {
 
 #button:hover:before {height: 100%;}
 #button:hover:after {width: 100%;}
+
+#button-cancel {
+    display: block;
+    position: relative;
+
+    margin: 20px 0;
+    border-radius: 3px;
+    border: 0;
+
+    background: white;
+
+    text-transform: uppercase;
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+#button-cancel:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: -8px;
+    background: #000;
+    transition: all 0.3s ease-in;
+}
+
+#button-cancel:after {
+    width: 0%;
+    height: 2px;
+}
+
+#button-cancel:hover:before {height: 100%;}
+#button-cancel:hover:after {width: 100%;}
 
 
 /* RESPONSIVE ENTRE 750PX ET 1124PX */
