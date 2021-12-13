@@ -654,7 +654,10 @@ textarea::placeholder {
 
 .project-form .description {
     height: 350px;
-    margin-bottom: 15px;
+}
+
+.project-form .tox-tinymce {
+    margin-bottom: 25px;
 }
 
 .project-form h3 {
