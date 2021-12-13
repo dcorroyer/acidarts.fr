@@ -1,3 +1,27 @@
+{% block javascripts %}
+  <script src="https://cdn.tiny.cloud/1/bwlkqrjifdgixstrk3xum78xl9lswdvg80o9rng64dekye6i/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  <script>
+    tinymce.init({
+      selector: '#project_description',
+      plugins: [
+          'link',
+          'textcolor',
+          'lists',
+          'powerpaste',
+          'autolink',
+          'tinymcespellchecker',
+          'anchor',
+          'lineheight'
+      ],
+      toolbar: [
+          'undo redo | bold italic underline | fontsizeselect lineheight lineheightselect'
+      ],
+      fontsize_formats: '8pt 9pt 10pt 11pt 12pt 14pt 16pt 18pt 20pt 22pt 24pt 26pt 36pt 48pt',
+      lineheight_formats: "8pt 9pt 10pt 11pt 12pt 14pt 16pt 18pt 20pt 22pt 24pt 26pt 36pt",
+    });
+  </script>
+{% endblock javascripts %}
+
 {% if project.filename %}
   <div class="flex-container-element">
     <div class="flex-item flex-form">

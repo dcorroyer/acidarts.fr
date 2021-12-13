@@ -23,17 +23,8 @@
         <div class="flex-item-project-desc">
           <div class="identification">
             <p class="type-project">{{ project.type }}</p>
-            <p class="title-project">{{ project.title }}</p>
-
-            <p class="description-project2"><i>EN</i> - <b>Schooldesk Photography Reproduction</b> is a still image made in <b>Unreal Engine 4</b>.</p>
-            <p class="description-project2">This is a photography reproduction. The goal of this quick project was to demonstrate that we can achieve realistic results using a realtime engine like <b>Unreal Engine 4</b>.
-            <p class="description-project2">Softwares used: 3ds Max, Photoshop, Substance Painter and Unreal Engine 4.</p>
-            <p class="description-project2">Here is the <a href="https://www.artstation.com/artwork/RYXmxD" target="blank"><b>artstation link</b></a> of the project.</p>
-
-            <p class="description-project2"><i>FR</i> - <b>Schooldesk Photography Reproduction</b> est un rendu d'image réalisé dans <b>Unreal Engine 4</b>.</p>
-            <p class="description-project2">C'est un exercice de reproduction d'une photographie. Le but de ce petit projet était de démontrer que l'on peut obtenir un rendu réaliste avec un moteur de rendu temps-réel comme <b>Unreal Engine 4</b>.
-            <p class="description-project2">Logiciels utilisés: 3ds Max, Photoshop, Substance Painter et Unreal Engine 4.</p>
-            <p class="description-project2">Voici le lien <a href="https://www.artstation.com/artwork/RYXmxD" target="blank"><b>artstation</b></a> du projet.</p>
+            <p class="title-element">{{ project.title }}</p>
+            <p>{{ project.description|raw }}</p>
           </div>
         </div>
       </div>
@@ -64,14 +55,14 @@
     </section>
   {% endif %}
 
-  <section>
-    <div class="container">
-      {% for video in project.videos %}
-        <div class="project-video text-center" id="projects_videos">
-          <iframe width="560" height="315" src="{{ video.videoname|replace({'watch?v=' : "embed/"}) }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-      {% endfor %}
-    </div>
-  </section>
+{#  <section>#}
+{#    <div class="container">#}
+{#      {% for video in project.videos %}#}
+{#        <div class="project-video text-center" id="projects_videos">#}
+{#          <iframe width="560" height="315" src="{{ video.videoname|replace({'watch?v=' : "embed/"}) }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>#}
+{#        </div>#}
+{#      {% endfor %}#}
+{#    </div>#}
+{#  </section>#}
 
 {% endblock body %}

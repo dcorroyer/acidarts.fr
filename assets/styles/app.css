@@ -653,7 +653,7 @@ textarea::placeholder {
 }
 
 .project-form .description {
-    resize: none;
+    height: 350px;
     margin-bottom: 15px;
 }
 
@@ -824,7 +824,7 @@ input, textarea {
 }
 
 #button:after {
-    width: 0%;
+    width: 0;
     height: 2px;
 }
 
@@ -857,7 +857,7 @@ input, textarea {
 }
 
 #button-cancel:after {
-    width: 0%;
+    width: 0;
     height: 2px;
 }
 
