@@ -13,15 +13,15 @@
         <div class="flex-item-project-img">
           <div class="img-project">
             {% if project.filename %}
-              <img src="{{ vich_uploader_asset(project, 'thumbFile') }}" alt="{{ project.title }}" class="img-project-library">
+              <img src="{{ vich_uploader_asset(project, 'thumbFile') }}" alt="{{ project.title }}" class="img-project-thumbnail">
             {% else %}
-              <img src="{{ '../images/empty.jpg' }}" alt="{{ project.title }}" class="img-project-library">
+              <img src="{{ '../images/empty.jpg' }}" alt="{{ project.title }}" class="img-project-thumbnail">
             {% endif %}
           </div>
         </div>
 
         <div class="flex-item-project-desc">
-          <div class="identification">
+          <div class="identification-project">
             <p class="type-project">{{ project.type }}</p>
             <p class="title-element">{{ project.title }}</p>
             <p>{{ project.description|raw }}</p>

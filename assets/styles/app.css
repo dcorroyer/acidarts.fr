@@ -251,6 +251,11 @@ footer p {
 
 .img-project {
     margin-top: 50px;
+    text-align: center;
+}
+
+.img-project-thumbnail {
+    width: 92.5%;
 }
 
 .img-project-library {
@@ -696,6 +701,11 @@ textarea::placeholder {
 .identification {
     width: 80%;
     margin: 50px auto 0 auto;
+}
+
+.identification-project {
+    width: 80%;
+    margin: 50px auto;
 }
 
 .identification-about {
