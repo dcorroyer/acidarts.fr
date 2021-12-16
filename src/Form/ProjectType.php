@@ -45,11 +45,27 @@ class ProjectType extends AbstractType
                 ],
                 'required' => false
             ])
+            ->add('thumbVideo', TextType::class, [
+                'attr'     => [
+                    'class'       => 'thumbvideo',
+                    'placeholder' => 'VIDEO THUMBNAIL LINK*'
+                ],
+                'label'    => 'Video thumbnail link',
+                'required' => false
+            ])
+            ->add('thumbVideoTitle', TextType::class, [
+                'attr'     => [
+                    'class' => 'thumbvideotitle',
+                    'placeholder' => 'VIDEO THUMBNAIL TITLE*'
+                ],
+                'label'    => 'Video thumbnail title',
+                'required' => false
+            ])
             ->add('thumbFile', FileType::class, [
                 'attr'     => [
                     'class' => 'thumbfile'
                 ],
-                'label'    => 'Thumbnail',
+                'label'    => 'Image thumbnail',
                 'required' => false
             ])
             ->add('imageFiles', FileType::class, [

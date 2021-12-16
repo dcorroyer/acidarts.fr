@@ -309,6 +309,14 @@ footer p {
     padding: 60px 0;
 }
 
+.video {
+    text-align: center;
+}
+
+.video a img {
+    width: 100%;
+}
+
 
 /* ANIMATION IMAGE */
 
@@ -648,6 +656,8 @@ textarea::placeholder {
 .project-form .title,
 .project-form .choices,
 .project-form .description,
+.project-form .thumbvideo,
+.project-form .thumbvideotitle,
 .project-form .thumbfile,
 .project-form .imagefiles {
     width: 100%;
@@ -676,6 +686,8 @@ textarea::placeholder {
 
 .project-form .title:focus,
 .project-form .description:focus,
+.project-form .thumbvideo:focus,
+.project-form .thumbvideotitle:focus,
 .project-form .thumbfile:focus,
 .project-form .imagefiles:focus {
     outline: none;

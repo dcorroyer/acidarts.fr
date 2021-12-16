@@ -74,6 +74,16 @@ class Project
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+    private $thumbVideo;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $thumbVideoTitle;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
     private $fileName;
 
     /**
@@ -105,10 +115,13 @@ class Project
     public function __construct()
     {
         $this->createdAt = new DateTime();
-        $this->pictures = new ArrayCollection();
-        $this->videos = new ArrayCollection();
+        $this->pictures  = new ArrayCollection();
+        $this->videos    = new ArrayCollection();
     }
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
@@ -224,6 +237,44 @@ class Project
     public function setUpdatedAt(DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getThumbVideo(): ?string
+    {
+        return $this->thumbVideo;
+    }
+
+    /**
+     * @param $thumbVideo
+     * @return $this
+     */
+    public function setThumbVideo($thumbVideo): self
+    {
+        $this->thumbVideo = $thumbVideo;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getThumbVideoTitle(): ?string
+    {
+        return $this->thumbVideoTitle;
+    }
+
+    /**
+     * @param $thumbVideoTitle
+     * @return $this
+     */
+    public function setThumbVideoTitle($thumbVideoTitle): self
+    {
+        $this->thumbVideoTitle = $thumbVideoTitle;
 
         return $this;
     }
