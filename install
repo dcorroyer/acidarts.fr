@@ -1,0 +1,30 @@
+#!/bin/bash
+#Setup acidarts app
+
+if [ -f docker-compose.yml ]; then
+    echo "docker-compose.yml exists"
+else
+    echo "docker-compose.yml doesn't exists"
+    cp docker-compose.yml.dist docker-compose.yml
+fi
+
+if [ -f .env ]; then
+    echo ".env exists"
+else
+    echo ".env doesn't exists"
+    cp .env.example .env
+    echo ".env copied from .env.example"
+fi
+
+docker-compose up -d
+
+docker-compose run --rm php74-service composer install
+docker-compose run --rm php74-service php bin/console d:d:c
+
+docker-compose run --rm php74-service php bin/console assets:install --symlink public
+docker-compose run --rm php74-service bin/console fos:js-routing:dump --format=json --target=public/js/fos_js_routes.json
+
+docker-compose run --rm node-service yarn install
+docker-compose run --rm node-service yarn build
+
+echo "process finished"
