@@ -1,8 +1,5 @@
 version: '3'
 
-networks:
-  app:
-
 services:
 
   # nginx
@@ -41,7 +38,7 @@ services:
     ports:
       - "4306:3306"
     volumes:
-      - ./mysql:/var/lib/mysql
+      - db-data:/var/lib/mysql
     command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     restart: always # always restart unless stopped manually
     environment:
@@ -67,10 +64,16 @@ services:
 
   # node
   node-service:
-    image: node:latest
+    image: node:lts-stretch
     container_name: node-container
     volumes:
       - .:/var/www/project
     working_dir: /var/www/project
     networks:
       - app
+
+networks:
+  app:
+
+volumes:
+  db-data:

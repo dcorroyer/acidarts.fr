@@ -1,11 +1,14 @@
 #!/bin/bash
 #Setup acidarts app
 
+sudo systemctl restart docker
+
 if [ -f docker-compose.yml ]; then
     echo "docker-compose.yml exists"
 else
     echo "docker-compose.yml doesn't exists"
     cp docker-compose.yml.dist docker-compose.yml
+    echo "docker-compose.yml copied from docker-compose.yml.dist"
 fi
 
 if [ -f .env ]; then
