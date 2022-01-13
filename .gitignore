@@ -24,3 +24,11 @@
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
+
+###> others ###
+.env
+.idea/
+/public/uploads/
+/public/js/
+docker-compose.yml
+###< others ###
