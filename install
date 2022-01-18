@@ -1,6 +1,8 @@
 #!/bin/bash
 #Setup acidarts app
 
+path=$(ls -A 'vendor/')
+
 sudo systemctl restart docker
 
 if [ -f docker-compose.yml ]; then
@@ -20,6 +22,11 @@ else
 fi
 
 docker-compose up -d
+
+if [[ ! -z "$path" ]]; then
+    echo "vendor is not empty"
+    docker-compose run --rm php74-service rm -r vendor/
+fi
 
 docker-compose run --rm php74-service composer install
 docker-compose run --rm php74-service php bin/console d:d:c
