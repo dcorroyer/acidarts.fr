@@ -6,21 +6,15 @@
 /public/bundles/
 /var/
 /vendor/
-migrations/
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
-.phpunit
 .phpunit.result.cache
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 
-###> others ###
-.env
-.idea/
-/public/uploads/
-/public/js/
-###< others ###
+###> phpunit/phpunit ###
+###< phpunit/phpunit ###
 
 ###> symfony/webpack-encore-bundle ###
 /node_modules/
@@ -29,5 +23,10 @@ npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 
-/mysql
+###> others ###
+.env
+.idea/
+/public/uploads/
+/public/js/
 docker-compose.yml
+###< others ###

@@ -28,13 +28,16 @@ class ProjectType extends AbstractType
                     'class' => 'choices'
                 ],
                 'choices' => [
-                    'Type of 3D project' => [
-                        '-- Select the type --'     => null,
-                        '3d realtime rendering'     => '3d realtime rendering',
-                        '3d realtime application'   => '3d realtime application',
-                        '3d mobile rendering'       => '3d mobile rendering',
-                        '3d video game'             => '3d video game',
-                        '3d architecture rendering' => '3d architecture rendering',
+                    'Type of the project' => [
+                        '-- Select the type --' => null,
+                        'Web application'       => 'Web application',
+                        'Web game'              => 'Web game',
+                        'Back end application'  => 'Back end application',
+                        'Front end application' => 'Front end application',
+                        'Mobile application'    => 'Mobile application',
+                        'Mobile game'           => 'Mobile game',
+                        'Infra application'     => 'Infra application',
+                        'Software application'  => 'Software application',
                     ]
                 ]
             ])
@@ -43,22 +46,6 @@ class ProjectType extends AbstractType
                     'class'       => 'description',
                     'placeholder' => 'DESCRIPTION *'
                 ],
-                'required' => false
-            ])
-            ->add('thumbVideo', TextType::class, [
-                'attr'     => [
-                    'class'       => 'thumbvideo',
-                    'placeholder' => 'VIDEO THUMBNAIL LINK*'
-                ],
-                'label'    => 'Video thumbnail link',
-                'required' => false
-            ])
-            ->add('thumbVideoTitle', TextType::class, [
-                'attr'     => [
-                    'class' => 'thumbvideotitle',
-                    'placeholder' => 'VIDEO THUMBNAIL TITLE*'
-                ],
-                'label'    => 'Video thumbnail title',
                 'required' => false
             ])
             ->add('thumbFile', FileType::class, [

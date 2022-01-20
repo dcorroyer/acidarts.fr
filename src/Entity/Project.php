@@ -8,8 +8,8 @@ use DateTime;
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Exception;
 use Doctrine\ORM\Mapping as ORM;
+use Exception;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -70,16 +70,6 @@ class Project
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $thumbVideo;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $thumbVideoTitle;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -244,44 +234,6 @@ class Project
     /**
      * @return string|null
      */
-    public function getThumbVideo(): ?string
-    {
-        return $this->thumbVideo;
-    }
-
-    /**
-     * @param $thumbVideo
-     * @return $this
-     */
-    public function setThumbVideo($thumbVideo): self
-    {
-        $this->thumbVideo = $thumbVideo;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getThumbVideoTitle(): ?string
-    {
-        return $this->thumbVideoTitle;
-    }
-
-    /**
-     * @param $thumbVideoTitle
-     * @return $this
-     */
-    public function setThumbVideoTitle($thumbVideoTitle): self
-    {
-        $this->thumbVideoTitle = $thumbVideoTitle;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
     public function getFileName(): ?string
     {
         return $this->fileName;
@@ -297,7 +249,6 @@ class Project
 
         return $this;
     }
-
 
     /**
      * @return File|null
@@ -402,7 +353,8 @@ class Project
     }
 
     /**
-     * @return string
+     * @param string|null $slug
+     * @return Project
      */
     public function setSlug(?string $slug): self
     {
@@ -419,6 +371,10 @@ class Project
         return $this->videos;
     }
 
+    /**
+     * @param Video $video
+     * @return $this
+     */
     public function addVideo(Video $video): self
     {
         if (!$this->videos->contains($video)) {
@@ -429,6 +385,10 @@ class Project
         return $this;
     }
 
+    /**
+     * @param Video $video
+     * @return $this
+     */
     public function removeVideo(Video $video): self
     {
         if ($this->videos->removeElement($video)) {
