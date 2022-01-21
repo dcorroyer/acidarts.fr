@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+  <section>
+    <div class="container">
+      <h4><a href="{{ path('project_index') }}"><span>Acidarts ></span></a><a href="{{ path('admin_project_index') }}"> ERROR 404</a></h4>
+      <h1>ERROR 404</h1>
+
+      <div class="table-error">
+        <h1>Page not found</h1>
+        <p>The requested page couldn't be located.</p>
+        <p>Checkout for any URL misspelling or <a href="{{ path('project_index') }}">return to the homepage.</a></p>
+      </div>
+
+      <div class="table-error">
+        <p>----------------</p>
+      </div>
+
+      <div class="table-error">
+        <h1>Page non trouvée</h1>
+        <p>La page demandée ne peut être trouvée</p>
+        <p>Vérifiez l'url ou <a href="{{ path('project_index') }}">cliquez ici </a>pour retourner vers la page d'accueil.</p>
+      </div>
+    </div>
+  </section>
+
+{% endblock body %}

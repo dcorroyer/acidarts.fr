@@ -72,7 +72,7 @@ class ProjectType extends AbstractType
                 'by_reference'  => false,
                 'entry_options' => ['label' => false],
                 'entry_type'    => VideoType::class,
-                'label'         => false
+                'label'         => 'Videos'
             ])
         ;
     }

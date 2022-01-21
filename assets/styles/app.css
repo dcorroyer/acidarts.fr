@@ -180,6 +180,15 @@ footer p {
     font-size: 11px;
 }
 
+/* 404 ERROR */
+.table-error {
+    max-width: calc(100% - 2em);
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 800px;
+    text-align: center
+}
+
 
 /* PROJECTS */
 
@@ -705,6 +714,16 @@ textarea::placeholder {
 
 .project-form button {
     display: inline-block !important;
+}
+
+.col-4 input {
+    width: 100%;
+    display: block;
+}
+
+.project-form .video-button {
+    padding: 0.25em 0.5em;
+    margin-bottom: 10px;
 }
 
 
