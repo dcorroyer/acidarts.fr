@@ -52,9 +52,9 @@
       <div class="flex-container">
         <div id="links">
         {% for picture in project.pictures %}
-          <a href="{{ vich_uploader_asset(picture, 'imageFile') }}">
+          <a href="{{ vich_uploader_asset(picture, 'imageFile')|imagine_filter('thumb') }}">
           <img
-            src="{{ vich_uploader_asset(picture, 'imageFile') }}"
+            src="{{ vich_uploader_asset(picture, 'imageFile')|imagine_filter('thumb') }}"
             alt="{{ project.filename }}"
             class="img-project-library"
           />

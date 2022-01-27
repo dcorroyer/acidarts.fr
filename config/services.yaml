@@ -16,3 +16,6 @@ services:
         resource: '../src/Controller/'
         tags: ['controller.service_arguments']
 
+    App\Listener\ImageCacheSubscriber:
+        tags:
+            - { name: doctrine.event_subscriber }

@@ -40,8 +40,8 @@
       <div class="container">
         <div id="links">
           {% for picture in project.pictures %}
-            <a href="{{ vich_uploader_asset(picture, 'imageFile') }}">
-              <img src="{{ vich_uploader_asset(picture, 'imageFile') }}" alt="{{ project.filename }}" class="img-project-library">
+            <a href="{{ vich_uploader_asset(picture, 'imageFile')|imagine_filter('thumb') }}">
+              <img src="{{ vich_uploader_asset(picture, 'imageFile')|imagine_filter('thumb') }}" alt="{{ project.filename }}" class="img-project-library">
             </a>
           {% endfor %}
         </div>

@@ -7,7 +7,7 @@
     <div class="img">
       <figure class="snip1573">
         {% if project.filename %}
-          <img src="{{ vich_uploader_asset(project, 'thumbFile') }}" alt="imgprvw">
+          <img src="{{ vich_uploader_asset(project, 'thumbFile') | imagine_filter('thumb') }}" alt="imgprvw">
         {% else %}
           <img src="{{ 'images/empty.jpg' }}" alt="imgprvw">
         {% endif %}

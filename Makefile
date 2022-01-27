@@ -4,6 +4,10 @@ up:
 down:
 	docker-compose down
 
+reup:
+	docker-compose down
+	docker-compose up -d
+
 build:
 	docker-compose build
 
@@ -11,7 +15,7 @@ rebuild:
 	docker-compose build --no-cache
 
 back:
-	docker-compose exec php74-service sh
+	docker exec -it php74-container bash
 
 symfonycreate:
 	docker-compose run --rm php74-service composer create-project symfony/website-skeleton .

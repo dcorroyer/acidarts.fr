@@ -30,3 +30,7 @@ yarn-error.log
 /public/js/
 docker-compose.yml
 ###< others ###
+
+###> liip/imagine-bundle ###
+/public/media/cache/
+###< liip/imagine-bundle ###
