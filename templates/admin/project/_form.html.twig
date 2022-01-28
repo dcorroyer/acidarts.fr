@@ -50,7 +50,6 @@
   <section class="library">
     <div class="container">
       <div class="flex-container">
-        <div id="links">
         {% for picture in project.pictures %}
           <a href="{{ vich_uploader_asset(picture, 'imageFile')|imagine_filter('thumb') }}">
           <img
@@ -59,29 +58,17 @@
             class="img-project-library"
           />
           </a>
-{#          <form#}
-{#            method="post"#}
-{#            action="{{ path('admin_picture_delete', {id: picture.id}) }}"#}
-{#            onsubmit="return confirm('Are you sure ?')"#}
-{#            class="delete-image"#}
-{#          >#}
-{#            <input type="hidden" name="_method" value="DELETE">#}
-{#            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ picture.id) }}">#}
-{#            <button type="submit">Delete</button>#}
-{#          </form>#}
+          <form
+            method="post"
+            action="{{ path('admin_picture_delete', {id: picture.id}) }}"
+            onsubmit="return confirm('Are you sure ?')"
+            class="delete-image"
+          >
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ picture.id) }}">
+            <button type="submit">Delete</button>
+          </form>
         {% endfor %}
-        </div>
-
-        <div id="blueimp-gallery" class="blueimp-gallery">
-          <div class="slides"></div>
-          <h3 class="title"></h3>
-          <a class="prev">‹</a>
-          <a class="next">›</a>
-          <a class="close">×</a>
-          <a class="play-pause"></a>
-          <ol class="indicator"></ol>
-        </div>
-
       </div>
     </div>
   </section>

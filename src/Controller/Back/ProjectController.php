@@ -4,6 +4,7 @@ namespace App\Controller\Back;
 
 use App\Entity\Project;
 use App\Form\ProjectType;
+use App\Repository\PictureRepository;
 use App\Repository\ProjectRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Flasher\Toastr\Prime\ToastrFactory;
@@ -62,10 +63,11 @@ class ProjectController extends AbstractController
     /**
      * @Route("/admin/projects/new", name="admin_project_new", methods={"GET","POST"})
      * @param Request $request
+     * @param PictureRepository $pictureRepository
      * @param ToastrFactory $flasher
      * @return Response
      */
-    public function newAction(Request $request, ToastrFactory $flasher): Response
+    public function newAction(Request $request, PictureRepository $pictureRepository, ToastrFactory $flasher): Response
     {
         $project = new Project();
         $form    = $this->createForm(ProjectType::class, $project);
@@ -73,9 +75,17 @@ class ProjectController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $position = $this->repository->projectCount();
-
             $project->setPosition(intval($position) + 1);
+
             $this->em->persist($project);
+            $this->em->flush();
+
+            $pictures = $pictureRepository->retrievePicturesFromProject($project);
+
+            for ($i = 0; $i < count($pictures); $i++) {
+                $pictures[$i]->setPosition($i+1);
+            }
+
             $this->em->flush();
             
             $flasher->addSuccess('Project created successfully!');

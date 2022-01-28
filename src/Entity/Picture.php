@@ -2,13 +2,15 @@
 
 namespace App\Entity;
 
+use App\Repository\PictureRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass=PictureRepository::class)
  * @Vich\Uploadable()
  */
 class Picture
@@ -17,11 +19,19 @@ class Picture
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("show_projects")
      */
     private $id;
 
     /**
+     * @ORM\Column(name="position", type="integer", nullable=true)
+     * @Groups("show_projects")
+     */
+    private $position;
+
+    /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("show_projects")
      */
     private $fileName;
 
@@ -43,6 +53,25 @@ class Picture
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param int $position
+     * @return $this
+     */
+    public function setPosition(int $position): self
+    {
+        $this->position = $position;
+
+        return $this;
     }
 
     /**

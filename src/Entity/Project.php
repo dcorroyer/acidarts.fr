@@ -93,6 +93,7 @@ class Project
     private $imageFiles;
 
     /**
+     * @Groups("show_projects")
      * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="project", orphanRemoval=true, cascade={"persist"})
      */
     private $pictures;
@@ -293,6 +294,7 @@ class Project
             $this->addPicture($picture);
         }
         $this->imageFiles = $imageFiles;
+
         return $this;
     }
 
