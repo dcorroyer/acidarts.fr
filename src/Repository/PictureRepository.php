@@ -20,33 +20,40 @@ class PictureRepository extends ServiceEntityRepository
     }
 
     /**
+     * Retrieve pictures attached to a project (Relation Many to One)
+     *
      * @param $project
+     *
      * @return Picture[]
      */
     public function retrievePicturesFromProject($project): array
     {
         return $this->createQueryBuilder('p')
-                ->leftJoin('p.project', 'project')
-                ->where('project.id = :id')
-                ->setParameter('id', $project)
-                ->getQuery()
-                ->execute();
+            ->leftJoin('p.project', 'project')
+            ->where('project.id = :id')
+            ->setParameter('id', $project)
+            ->getQuery()
+            ->execute();
     }
 
     /**
+     * Retrieve the picture that has the higher position
+     *
      * @param $position
+     * @param $project
+     *
      * @return Picture[]
      */
     public function picturesHigherPosition($position, $project): array
     {
         $qb = $this->createQueryBuilder('p')
-                ->leftJoin('p.project', 'project')
-                ->where('project.id = :id')
-                ->setParameter('id', $project)
-                ->andWhere('p.position > :position')
-                ->setParameter('position', $position)
-                ->orderBy('p.position', 'ASC')
-                ->getQuery();
+            ->leftJoin('p.project', 'project')
+            ->where('project.id = :id')
+            ->setParameter('id', $project)
+            ->andWhere('p.position > :position')
+            ->setParameter('position', $position)
+            ->orderBy('p.position', 'ASC')
+            ->getQuery();
 
         return $qb->execute();
     }

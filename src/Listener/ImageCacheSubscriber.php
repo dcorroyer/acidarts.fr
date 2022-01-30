@@ -45,7 +45,6 @@ class ImageCacheSubscriber implements EventSubscriber
 
     private function uploadFile($entity)
     {
-        // upload only works for Product entities
         if (!$entity instanceof Project) {
             return;
         }

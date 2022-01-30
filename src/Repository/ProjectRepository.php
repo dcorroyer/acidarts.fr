@@ -22,6 +22,8 @@ class ProjectRepository extends ServiceEntityRepository
     }
 
     /**
+     * Count projects
+     *
      * @return int
      */
     public function projectCount(): int
@@ -37,7 +39,10 @@ class ProjectRepository extends ServiceEntityRepository
     }
 
     /**
+     * Retrieve the project with the higher position
+     *
      * @param $position
+     *
      * @return Project[]
      */
     public function projectsHigherPosition($position): array
