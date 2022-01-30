@@ -19,19 +19,19 @@ class Picture
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups("show_projects")
+     * @Groups("show_pictures")
      */
     private $id;
 
     /**
      * @ORM\Column(name="position", type="integer", nullable=true)
-     * @Groups("show_projects")
+     * @Groups("show_pictures")
      */
     private $position;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("show_projects")
+     * @Groups("show_pictures")
      */
     private $fileName;
 

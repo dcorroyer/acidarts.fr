@@ -93,8 +93,8 @@ class Project
     private $imageFiles;
 
     /**
-     * @Groups("show_projects")
      * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="project", orphanRemoval=true, cascade={"persist"})
+     * @Groups("show_pictures")
      */
     private $pictures;
 

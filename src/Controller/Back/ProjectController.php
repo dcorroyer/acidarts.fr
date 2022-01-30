@@ -57,7 +57,22 @@ class ProjectController extends AbstractController
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
+    }
 
+    /**
+     * @Route("/admin/projects/{id}/pictures/json", name="admin_project_pictures_json", methods={"GET"})
+     * @param Project $project
+     * @param ProjectRepository $projectRepository
+     * @param SerializerInterface $serializer
+     * @return Response
+     */
+    public function getProjectAction(Project $project, ProjectRepository $projectRepository, SerializerInterface $serializer): Response
+    {
+        $response = new Response();
+        $response->setContent($serializer->serialize($projectRepository->find($project), 'json', ['groups' => 'show_pictures']));
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
 
     /**
